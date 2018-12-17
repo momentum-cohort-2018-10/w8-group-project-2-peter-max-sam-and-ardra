@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+"psycopg2" = "*"
+django-extensions = "*"
+django-debug-toolbar = "*"
+
+[dev-packages]
+prospector = "*"
+"flake8" = "*"
+
+[requires]
+python_version = "3.7"
