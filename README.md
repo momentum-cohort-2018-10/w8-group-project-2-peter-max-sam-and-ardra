@@ -7,7 +7,7 @@ Your team's creativity and common sense should be used as you work. There are co
 
 Likewise, come up with your own features to make your project unique. You will likely use this project in your portfolio, so make it stand out!
 
-## Trying new things
+## Trying new things1
 
 Each team should try something they don't know how to do on their project. This could be a Python or JavaScript library they haven't used before or a feature of Django or Django REST Framework they haven't tried.
 
