@@ -1,0 +1,42 @@
+{% extends 'base.html' %} 
+
+
+
+{% block title %}
+    Homepage - {{ block.super }} 
+{% endblock title %}
+
+
+{% block content %}
+
+
+
+<div class = "container">
+
+      <a class="subtitle">
+        <span class="icon is-medium">
+          <i class="fas fa-plus-circle"></i>
+        </span>
+        <span>Add a Quiz!</span>
+      </a>
+     
+</div>  
+    {% for quiz in quizzes %}
+      <div class = "container box">
+        <h1 class = "title"> <a href="{% url 'quiz_detail' slug=quiz.slug %}">{{ quiz.title }} </a></h1>
+        <h2 class = "subtitle"> Author | {{ quiz.author }} </h2>
+        <p> Cards |  </p>
+        <p> Description | {{ quiz.description }} </p>
+        <div class="controls">
+            <p >
+                
+                <a class="button is-success"><i class="fas fa-check"></i> &nbsp; Take The Quiz</a>
+                <a class="button is-info"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
+        </div>
+      </div>
+    
+      
+    {% endfor %}
+
+{% endblock content %}
+
