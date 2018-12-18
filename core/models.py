@@ -20,3 +20,9 @@ class Card(models.Model):
     answer = models.TextField(blank=False, null=False)
     right_answers = models.IntegerField(blank=False)
     wrong_answers = models.IntegerField(blank=False)
+
+
+
+    # pref one id per url if possible 
+    # every answer has its own unique id 
+    # Delete /answers/2 rather than Delete /post/1/answers/2
