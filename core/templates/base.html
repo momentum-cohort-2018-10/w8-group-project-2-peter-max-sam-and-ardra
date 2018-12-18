@@ -1,0 +1,57 @@
+{% load staticfiles %}
+<!doctype html> <html>
+<head>
+<title>
+{% block title %}
+    Quizzer
+{% endblock title %}
+</title>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<link rel="stylesheet" href="{% static 'style.css' %}"/> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"/>
+
+
+
+
+{% block header %}
+{% endblock header %}
+</head>
+
+<body>
+
+<header class="hero is-dark is-bold is-medium">
+        <nav class="navbar">
+            <h1 class="title is-1 has-text-light"><i class="fab fa-quora"></i>UIZZER</h1>
+                    <div class="navbar-menu">
+                        <div class="navbar-end">
+                            <a href="{% url 'home' %}" class="navbar-item is-active">HOME
+                                &nbsp;<i class="fas fa-home"></i></a>
+                            <a class="navbar-item ">My ACCOUNT</a>
+                            <a class="navbar-item ">LOGIN</a>
+                            <div class="navbar-item">
+                                {% comment %} {% if user.is_authenticated %}
+                                    <a class="button is-black is-inverted" href="{% url '#' %}">logout</a>
+                                    {% else %}
+                                    <a class="button is-black is-inverted" href="{% url '#' %}">login</a>
+                                    
+                                    <a class="button is-black is-inverted" href="{% url '#' %}">Register</a>
+                                   
+                                {% endif %} {% endcomment %}   
+                            </div>
+                        </div>
+        </nav>
+    </header>
+
+
+{% block content %}{% endblock content %}
+{% block footer %}{% endblock footer %}
+</body>
+<footer class="footer hero is-primary is-bold is-medium">
+    <div class="content has-text-centered has-text-white-ter">
+        
+        <a > <i class="fab fa-twitter"></i> &nbsp; </a>
+        <a > <i class="fab fa-facebook-square"></i> &nbsp; </a>
+        <a > <i class="fab fa-instagram"></i> &nbsp; </a>
+        <p> - Peter Max Ardra Sam - </p>
+    </div>
+</html>
