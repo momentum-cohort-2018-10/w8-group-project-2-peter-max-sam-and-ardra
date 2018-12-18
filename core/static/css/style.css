@@ -1,0 +1,21 @@
+body{
+    margin: 100px;
+    padding: 100px;
+    
+}
+.right {
+    float: right;
+    /* width: 300px;
+    padding: 10px; */
+  }
+
+
+.top{
+    margin-top: 60px;
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 500px;
+    
+    
+    
+}

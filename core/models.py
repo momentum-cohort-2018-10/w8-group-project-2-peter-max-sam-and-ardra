@@ -7,6 +7,9 @@ class Quiz(models.Model):
     slug = models.SlugField(unique=True, max_length=255)
     date_created = models.DateField(auto_now_add=True)
 
+    class Meta:
+        verbose_name_plural = "Quizzes"
+
     def __str__(self):
         return self.title
 
@@ -17,3 +20,9 @@ class Card(models.Model):
     answer = models.TextField(blank=False, null=False)
     right_answers = models.IntegerField(blank=False)
     wrong_answers = models.IntegerField(blank=False)
+
+
+
+    # pref one id per url if possible 
+    # every answer has its own unique id 
+    # Delete /answers/2 rather than Delete /post/1/answers/2

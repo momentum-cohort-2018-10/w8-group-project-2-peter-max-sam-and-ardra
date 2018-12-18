@@ -1,3 +1,16 @@
 from django.contrib import admin
+from core.models import Quiz, Card
 
-# Register your models here.
+
+class CardsInLine(admin.StackedInline):
+    model = Card
+    list_display = ("quiz", "question", "answer",)
+
+
+class QuizAdmin(admin.ModelAdmin):
+    model = Quiz
+    list_display = ("title", "author", "slug", "date_created")
+    inlines = [CardsInLine]
+
+
+admin.site.register(Quiz, QuizAdmin)
