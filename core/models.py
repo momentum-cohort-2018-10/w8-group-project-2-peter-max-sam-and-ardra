@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 class Quiz(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="quizzes")
@@ -12,14 +13,17 @@ class Quiz(models.Model):
 
     def __str__(self):
         return self.title
-
+        
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(Quiz, self).save(*args, **kwargs)
 
 class Card(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="cards")
     question = models.TextField(blank=False, null=False)
     answer = models.TextField(blank=False, null=False)
-    right_answers = models.IntegerField(blank=True)
-    wrong_answers = models.IntegerField(blank=True)
+    right_answers = models.IntegerField(blank=True, default='0')
+    wrong_answers = models.IntegerField(blank=True, default='0')
 
 
 

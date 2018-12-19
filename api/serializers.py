@@ -6,26 +6,20 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ("username",)
 
-class CardSerializer(serializer.ModelSerializer):
+class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
-        fields = ("id", "question", "answer", "quiz", "right_answers", "wrong_answers",)
+        fields = ("quiz", "id", "question", "answer", "right_answers", "wrong_answers",)
 
-class QuizSerializer(serializers.ModelSerializer):
+class QuizSerializer(serializers.HyperlinkedModelSerializer):
     cards = CardSerializer(many=True, required=False)
-    owner = serializers.SlugRelatedField(slug_field="username", read_only=True)
+    owner = UserSerializer(read_only=True)
     
 
+    class Meta:
+        model = Quiz
+        fields = ("id", "owner", "title", "date_created", "cards",)
+        # # extra_kwargs = {
+        # #     'url': {'view_name': 'quiz', 'lookup_field': 'title'},
+        # }
 
-
-# class Quiz(models.Model):
-#     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="quizzes")
-#     title = models.CharField(max_length=255)
-#     slug = models.SlugField(unique=True, max_length=255)
-#     date_created = models.DateField(auto_now_add=True)
-
-#     class Meta:
-#         verbose_name_plural = "Quizzes"
-
-#     def __str__(self):
-#         return self.title
