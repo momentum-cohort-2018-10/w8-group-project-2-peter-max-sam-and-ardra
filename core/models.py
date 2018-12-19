@@ -18,8 +18,8 @@ class Card(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name="cards")
     question = models.TextField(blank=False, null=False)
     answer = models.TextField(blank=False, null=False)
-    right_answers = models.IntegerField(blank=False)
-    wrong_answers = models.IntegerField(blank=False)
+    right_answers = models.IntegerField(blank=True)
+    wrong_answers = models.IntegerField(blank=True)
 
 
 
