@@ -19,6 +19,7 @@ from core import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
     path('', views.index, name="home"),
     path('accounts/', include('registration.backends.simple.urls')),
     # path('account', views.account, name='account'),
