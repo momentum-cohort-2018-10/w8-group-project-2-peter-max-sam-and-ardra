@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+    Add a Quiz! - {{ block.super }}
+{% endblock title %}
+
+{% block content %}
+    <h2>{{ quiz.title }}</h2>
+    {% for card in quiz.cards.all %}
+        <h3><a href="{% url 'add_card' %}">
+            <button>Add Card</button></a></h3>
+    {% endfor %}
+{% endblock %}
