@@ -9,6 +9,8 @@ django = "*"
 django-extensions = "*"
 django-debug-toolbar = "*"
 django-registration-redux = "*"
+gunicorn = "*"
+django-heroku = "*"
 
 [dev-packages]
 prospector = "*"
