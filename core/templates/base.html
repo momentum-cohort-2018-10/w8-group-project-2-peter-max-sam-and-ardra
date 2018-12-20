@@ -30,12 +30,12 @@
                             <a class="navbar-item ">LOGIN</a>
                             <div class="navbar-item">
                                 {% comment %} {% if user.is_authenticated %}
-                                    <a class="button is-black is-inverted" href="{% url '#' %}">logout</a>
+                                    <a class="button is-black is-inverted" href="{% url 'auth_logout' %}">logout</a>
                                     {% else %}
-                                    <a class="button is-black is-inverted" href="{% url '#' %}">login</a>
+                                    <a class="button is-black is-inverted" href="{% url 'auth_login' %}">login</a>
                                     
-                                    <a class="button is-black is-inverted" href="{% url '#' %}">Register</a>
-                                   
+                                    <a class="button is-black is-inverted" href="{% url 'registration_register' %}">Register</a>
+
                                 {% endif %} {% endcomment %}   
                             </div>
                         </div>
