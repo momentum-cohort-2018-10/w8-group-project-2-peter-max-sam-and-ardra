@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+
+
+
+{% block title %}
+    Homepage - {{ block.super }} 
+{% endblock title %}
+
+
+{% block content %}
+
+
+
+<div class = "container">
+    <h1> {{ quiz.title }} </h1>
+     <h2>Cards:</h2>
+</div>  
+    {% for card in cards %}
+      <div class = "container box">
+        <h2 class = "subtitle"> The question is: {{ card.question }} </a></h2>
+        <h2 class = "subtitle"> The answer is: {{ card.answer }} </h2>
+        <div class="controls">
+            <p>
+                <a class="button is-info"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
+            </p>
+        </div>
+      </div>
+    
+      
+    {% endfor %}
+<a class="subtitle" href="{% url 'new_card' pk=quiz.pk %}">
+        <span class="icon is-medium">
+          <i class="fas fa-plus-circle"></i>
+        </span>
+        {% comment %} <a href="{% url 'new_card' pk=quiz.pk %}"<span>Add a Card!</span></a> {% endcomment %}
+      </a>
+     
+{% endblock content %}
+
