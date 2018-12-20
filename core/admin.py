@@ -9,7 +9,7 @@ class CardsInLine(admin.StackedInline):
 
 class QuizAdmin(admin.ModelAdmin):
     model = Quiz
-    list_display = ("title", "author", "slug", "date_created")
+    list_display = ("title", "author", "date_created")
     inlines = [CardsInLine]
 
 
