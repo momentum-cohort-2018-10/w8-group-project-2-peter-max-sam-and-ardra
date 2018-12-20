@@ -23,7 +23,7 @@
 </div>  
     {% for quiz in quizzes %}
       <div class = "container box">
-        <h1 class = "title"> <a href="{% url 'quiz_detail' slug=quiz.slug %}">{{ quiz.title }} </a></h1>
+        <h1 class = "title"> {{ quiz.title }} </a></h1>
         <h2 class = "subtitle"> Author | {{ quiz.author }} </h2>
         <p> Cards |  </p>
         <p> Description | {{ quiz.description }} </p>

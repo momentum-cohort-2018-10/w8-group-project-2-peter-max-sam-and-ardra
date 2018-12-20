@@ -11,15 +11,23 @@ class CardSerializer(serializers.ModelSerializer):
         model = Card
         fields = ("quiz", "id", "question", "answer", "right_answers", "wrong_answers",)
 
-class QuizSerializer(serializers.HyperlinkedModelSerializer):
+class QuizSerializer(serializers.ModelSerializer):
     cards = CardSerializer(many=True, required=False)
     owner = UserSerializer(read_only=True)
-    
 
     class Meta:
         model = Quiz
         fields = ("id", "owner", "title", "date_created", "cards",)
-        # # extra_kwargs = {
-        # #     'url': {'view_name': 'quiz', 'lookup_field': 'title'},
+
+    def create(self, validated_data):
+        cards_data = validated_data.pop('cards')
+        quiz = Quiz.objects.create(**validated_data)
+        for card_data in cards_data:
+            Card.objects.create(quiz=quiz, **cards_data)
+        return quiz
+
+    
+        # extra_kwargs = {
+        #     'url': {'view_name': 'quiz', 'lookup_field': 'title'},
         # }
 
