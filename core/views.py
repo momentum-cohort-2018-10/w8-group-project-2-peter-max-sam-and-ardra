@@ -58,3 +58,5 @@ def new_card(request, pk):
     })
 
 
+def play_quiz(request):
+    return render(request, 'quiz_play.html', {})
