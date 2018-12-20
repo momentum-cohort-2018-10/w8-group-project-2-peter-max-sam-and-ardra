@@ -10,10 +10,9 @@
 {% block content %}
 
 
-
 <div class = "container">
 
-      <a class="subtitle">
+      <a class="subtitle" href="{% url 'new_quiz' %}">
         <span class="icon is-medium">
           <i class="fas fa-plus-circle"></i>
         </span>
@@ -23,7 +22,7 @@
 </div>  
     {% for quiz in quizzes %}
       <div class = "container box">
-        <h1 class = "title"> <a href="{% url 'quiz_detail' slug=quiz.slug %}">{{ quiz.title }} </a></h1>
+        <h1 class = "title"> <a href="{% url 'quiz_detail' pk=quiz.pk %}">{{ quiz.title }} </a></h1>
         <h2 class = "subtitle"> Author | {{ quiz.author }} </h2>
         <p> Cards |  </p>
         <p> Description | {{ quiz.description }} </p>
