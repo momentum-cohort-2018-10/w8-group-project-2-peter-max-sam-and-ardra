@@ -29,14 +29,14 @@
                             <a class="navbar-item ">My ACCOUNT</a>
                             <a class="navbar-item ">LOGIN</a>
                             <div class="navbar-item">
-                                {% comment %} {% if user.is_authenticated %}
+                                {% if user.is_authenticated %}
                                     <a class="button is-black is-inverted" href="{% url 'auth_logout' %}">logout</a>
                                     {% else %}
                                     <a class="button is-black is-inverted" href="{% url 'auth_login' %}">login</a>
                                     
                                     <a class="button is-black is-inverted" href="{% url 'registration_register' %}">Register</a>
 
-                                {% endif %} {% endcomment %}   
+                                {% endif %} 
                             </div>
                         </div>
         </nav>
