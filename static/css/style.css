@@ -15,7 +15,11 @@ body{
     margin-left: 150px;
     margin-right: 150px;
     margin-bottom: 500px;
-    
-    
-    
+
 }
+
+textarea {
+    width: 400px;
+    height: 45px;
+}
+
