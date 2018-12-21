@@ -11,6 +11,7 @@ django-debug-toolbar = "*"
 django-registration-redux = "*"
 gunicorn = "*"
 django-heroku = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 prospector = "*"

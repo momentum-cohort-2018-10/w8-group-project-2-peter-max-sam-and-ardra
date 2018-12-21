@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'core',
     'registration',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,5 +134,7 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 EMAIL_PORT = 1025
 LOGIN_REDIRECT_URL = "home"
+
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
 django_heroku.settings(locals())
