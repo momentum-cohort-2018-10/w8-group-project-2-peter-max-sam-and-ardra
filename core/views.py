@@ -58,3 +58,29 @@ def new_card(request, pk):
     })
 
 
+def edit_quiz(request, pk):
+    quiz = Quiz.objects.get(pk=pk)
+    form_class = QuizForm
+    if request.method == 'POST':
+        form = form_class(data=request.POST, instance=quiz)
+        if form.is_valid():
+            form.save()
+            return redirect("quiz_detail", pk=quiz.pk)
+    
+    else:
+        form = form_class(instance=quiz)
+    return render(request, 'quizzes/edit_quiz.html', {'quiz': quiz, 'form': form, })
+
+
+def edit_card(request, pk):
+    card = Card.objects.get(pk=pk)
+    form_class = CardForm
+    if request.method =='POST':
+        form = form_class(data=request.POST, instance=card)
+        if form.is_valid():
+            form.save()
+            return redirect('quiz_detail', pk=card.pk)
+
+    else:
+        form = form_class(instance=card)
+    return render(request, 'cards/edit_card.html', {'card': card, 'form': form, })
