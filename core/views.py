@@ -21,6 +21,12 @@ def quiz_detail(request, pk):
         'cards': cards,
     })
 
+def play_quiz(request, pk):
+    quiz = Quiz.objects.get(pk=pk)
+    return render(request, 'quiz_play.html', {
+        'quiz': quiz,
+    })
+
 def new_quiz(request):
     if request.method == 'POST':
         form = QuizForm(request.POST)
@@ -56,5 +62,4 @@ def new_card(request, pk):
         "this_quiz": this_quiz
 
     })
-
 

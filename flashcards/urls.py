@@ -20,8 +20,10 @@ from core import views
 urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
     path('admin/', admin.site.urls),
+    path('api/', include('api.urls')),
     path('', views.index, name="home"),
     path('quiz/<int:pk>/', views.quiz_detail, name='quiz_detail'),
     path('quiz/new/', views.new_quiz, name='new_quiz'),
     path('quiz/<int:pk>/new/card', views.new_card, name='new_card'),
+    path('quiz/<int:pk>/playquiz/', views.play_quiz, name="play_quiz")
 ]
