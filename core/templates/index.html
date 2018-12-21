@@ -31,9 +31,9 @@
         
         <div class="controls">
             <p >
-                
                 <a class="button is-success" href="{% url 'play_quiz' pk=quiz.pk %}"><i class="fas fa-check"></i> &nbsp; Take The Quiz</a>
-                <a class="button is-info"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
+                <a class="button is-info" href="{% url 'edit_quiz' pk=quiz.pk %}"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
+                
         </div>
       </div>
     
