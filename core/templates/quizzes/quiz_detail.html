@@ -11,6 +11,38 @@
 
 
 
+<h1 class="subtitle hero is-link"> Build Quiz | {{ quiz.title }} </h1>
+<div class = "container ">
+    
+    
+    
+    
+    {% comment %} <a class="subtitle " href="{% url 'new_card' pk=quiz.pk %}">Add Card
+        <span class="icon is-medium ">
+          <i class="fas fa-plus-circle"></i>
+        </span> {% endcomment %}
+        {% comment %} <a href="{% url 'new_card' pk=quiz.pk %}"<span>Add a Card!</span></a> {% endcomment %}
+      </a>
+
+    <div class ="#">
+        <form role="form" action="" method="post" class= "title" >
+                {% csrf_token %}
+            {% comment %} <table>
+                {% for field in form %}
+                <tr class="textarea is-primary"  ><td >{{field}}</td></tr>
+                {% endfor %}
+            </table> {% endcomment %}
+        
+                {{ form.as_table }}
+            
+            <button type="submit" class = "button is-rounded is-warning">Submit</button>
+        </form> 
+    </div>
+    <br>
+    <br>
+
+
+     
 <div class = "container">
     <h1> {{ quiz.title }} </h1>
       <a class="subtitle" href="{% url 'play_quiz' pk=quiz.pk %}">
@@ -28,18 +60,16 @@
         <div class="controls">
             <p>
                 <a class="button is-info"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
+                <a class="button is-danger" href="{% url 'delete_card' pk=card.pk %}"> <i class="fas fa-wrench"></i> &nbsp; delete card</a>
             </p>
         </div>
       </div>
     
       
     {% endfor %}
-<a class="subtitle" href="{% url 'new_card' pk=quiz.pk %}">
-        <span class="icon is-medium">
-          <i class="fas fa-plus-circle"></i>
-        </span>
-        {% comment %} <a href="{% url 'new_card' pk=quiz.pk %}"<span>Add a Card!</span></a> {% endcomment %}
-      </a>
+
+    <a class="button is-outlined is-danger" href="{% url 'delete_quiz' pk=quiz.pk %}"> <i class="fas fa-trash"></i> &nbsp; delete {{ quiz.title }} QUIZ</a>
+
      
 {% endblock content %}
 

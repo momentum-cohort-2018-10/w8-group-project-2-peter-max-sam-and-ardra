@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from core.models import Quiz, Card
 from core.forms import QuizForm, CardForm
+# from django.url import reverse
 
 
 # Create your views here.
@@ -16,11 +17,44 @@ def account(request):
 def quiz_detail(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     cards = quiz.cards.all()
+
+    if request.method == 'POST':
+        form = CardForm(request.POST)
+        if form.is_valid():
+            card = form.save(commit=False)
+            card.quiz = quiz
+            card.save()
+            # return redirect('home')
+            return redirect('quiz_detail', pk=quiz.pk)
+
+    else:
+        form = CardForm()
+
+
     return render(request, 'quizzes/quiz_detail.html', {
         'quiz': quiz,
         'cards': cards,
+        'form': form,
     })
 
+def delete_card(request, pk):
+    """deletes a users card, user must be logged in"""
+    
+    card = Card.objects.get(pk=pk)
+    quiz_id = card.quiz.id
+    # if (request.user == quiz.author) or (request.user.is_staff):
+    card.delete()
+    return redirect('quiz_detail', pk=quiz_id)
+    # return render(request, 'quizzes/quiz_detail.html',)
+
+def delete_quiz(request, pk):
+    """deletes a users quiz, user must be logged in"""
+    # quiz = Quiz.objects.get(pk=pk)
+    quiz = Quiz.objects.get(pk=pk)
+    # if (request.user == quiz.author) or (request.user.is_staff):
+    quiz.delete()
+    return redirect('home')
+    # return render(request, 'quizzes/quiz_detail.html',)
 def play_quiz(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     return render(request, 'quiz_play.html', {
@@ -43,23 +77,38 @@ def new_quiz(request):
         "form": form,
     })
 
-def new_card(request, pk):
-    this_quiz = Quiz.objects.get(pk=pk)
-    if request.method == 'POST':
-        form = CardForm(request.POST)
-        if form.is_valid():
-            card = form.save(commit=False)
-            card.quiz = this_quiz
-            card.save()
-            return redirect('quiz_detail', pk=this_quiz.pk)
+# def new_card(request, pk):
+#     this_quiz = Quiz.objects.get(pk=pk)
+#     cards = this_quiz.cards.all()
 
-    else:
-        form = CardForm()
+#     if request.method == 'POST':
+#         form = CardForm(request.POST)
+#         if form.is_valid():
+#             card = form.save(commit=False)
+#             card.quiz = this_quiz
+#             card.save()
+#             return redirect('home')
+#             # return redirect('quiz_detail', pk=this_quiz.pk)
 
-    return render(request, 'quizzes/add_card.html', {
+#     else:
+#         form = CardForm()
 
-        "form": form,
-        "this_quiz": this_quiz
+#     return render(request, 'quizzes/quiz_detail.html', {
 
-    })
+#         "form": form,
+#         "this_quiz": this_quiz,
+#         "cards": cards,
+
+#     })
+
+# def take_quiz(request, pk):
+#     quiz = Quiz.objects.get(pk=pk)
+#     card_list = quiz.cards.all()
+#     card = card_list.first()
+
+#     return render(request, 'quizzes/quiz.html', {
+#         'quiz': quiz,
+#         'card_list': card_list,
+#         'card': card,
+#     })
 
