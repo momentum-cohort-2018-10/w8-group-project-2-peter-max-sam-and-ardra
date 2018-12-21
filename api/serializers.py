@@ -13,11 +13,11 @@ class CardSerializer(serializers.HyperlinkedModelSerializer):
 
 class QuizSerializer(serializers.HyperlinkedModelSerializer):
     cards = CardSerializer(many=True, required=False)
-    owner = UserSerializer(read_only=True)
+    author = UserSerializer(read_only=True)
 
     class Meta:
         model = Quiz
-        fields = ('url', 'owner', 'id', 'title', 'date_created', 'cards')
+        fields = ('url', 'author', 'id', 'title', 'date_created', 'cards')
 
     def create(self, validated_data):
         cards_data = validated_data.pop('cards')
