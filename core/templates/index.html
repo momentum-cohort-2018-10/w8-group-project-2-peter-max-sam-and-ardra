@@ -1,5 +1,5 @@
 {% extends 'base.html' %} 
-
+{% load el_pagination_tags %}
 
 
 {% block title %}
@@ -20,22 +20,28 @@
       </a>
      
 </div>  
+ 
+    {% paginate quizzes %}
     {% for quiz in quizzes %}
       <div class = "container box">
         <h1 class = "title"> <a href="{% url 'quiz_detail' pk=quiz.pk %}">{{ quiz.title }} </a></h1>
         <h2 class = "subtitle"> Author | {{ quiz.author }} </h2>
         <p> Cards |  </p>
         <p> Description | {{ quiz.description }} </p>
+        
         <div class="controls">
             <p >
                 
                 <a class="button is-success"><i class="fas fa-check"></i> &nbsp; Take The Quiz</a>
                 <a class="button is-info" href="{% url 'edit_quiz' pk=quiz.pk %}"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
+                <a class="button is-success" href="{% url 'play_quiz' pk=quiz.pk %}"><i class="fas fa-check"></i> &nbsp; Take The Quiz</a>
+                <a class="button is-info"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
         </div>
       </div>
     
       
     {% endfor %}
+    {% show_pages %}
 
 {% endblock content %}
 

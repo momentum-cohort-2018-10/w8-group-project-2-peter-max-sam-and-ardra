@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+<div class ="box media-right"> 
     <h2>New Quiz</h2>
-    <form method="POST" class="quiz-form">{% csrf_token %}
+    <form method="POST" class="quiz-form title is-1 ">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save</button>
+        <button type="submit" class=" button is-warning is-rounded ">Save</button>
     </form>
+</div>
+
 {% endblock %}
