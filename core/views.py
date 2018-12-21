@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from core.models import Quiz, Card
 from core.forms import QuizForm, CardForm
-# from django.url import reverse
+from django.contrib import messages
 
 
 # Create your views here.
@@ -24,8 +24,10 @@ def quiz_detail(request, pk):
             card = form.save(commit=False)
             card.quiz = quiz
             card.save()
-            # return redirect('home')
+            messages.success(request, 'On your way to learning! Would you like to add more cards?')
             return redirect('quiz_detail', pk=quiz.pk)
+        else:
+            messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
 
     else:
         form = CardForm()
@@ -68,7 +70,10 @@ def new_quiz(request):
             quiz = form.save(commit=False)
             quiz.author = request.user
             quiz.save()
+            messages.success(request, 'A new quiz has been made! Now add some cards.')
             return redirect('home')
+        else:
+            messages.warning(request, 'Sorry, something went wrong. Please try again!')
     else:
         form = QuizForm()
 
@@ -76,10 +81,6 @@ def new_quiz(request):
 
         "form": form,
     })
-
-# def new_card(request, pk):
-#     this_quiz = Quiz.objects.get(pk=pk)
-#     cards = this_quiz.cards.all()
 
 #     if request.method == 'POST':
 #         form = CardForm(request.POST)
@@ -111,4 +112,3 @@ def new_quiz(request):
 #         'card_list': card_list,
 #         'card': card,
 #     })
-

@@ -1,5 +1,5 @@
 {% extends 'base.html' %} 
-
+{% load el_pagination_tags %}
 
 
 {% block title %}
@@ -20,6 +20,8 @@
       </a>
      
 </div>  
+ 
+    {% paginate quizzes %}
     {% for quiz in quizzes %}
       <div class = "container box">
         <h1 class = "title"> <a href="{% url 'quiz_detail' pk=quiz.pk %}">{{ quiz.title }} </a></h1>
@@ -37,6 +39,7 @@
     
       
     {% endfor %}
+    {% show_pages %}
 
 {% endblock content %}
 
