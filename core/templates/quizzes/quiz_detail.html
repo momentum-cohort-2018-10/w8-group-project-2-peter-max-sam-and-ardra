@@ -43,6 +43,15 @@
 
 
      
+<div class = "container">
+    <h1> {{ quiz.title }} </h1>
+      <a class="subtitle" href="{% url 'play_quiz' pk=quiz.pk %}">
+        <span class="icon is-medium">
+          <i class="fas fa-plus-circle"></i>
+        </span>
+        <span>Play this Quiz!</span>
+      </a>
+     <h2>Cards:</h2>
 </div>  
     {% for card in cards %}
       <div class = "container box">
