@@ -4,17 +4,37 @@
 {% endblock title %}
 <script src="jquery-3.3.1.min.js" defer></script>
 <script src="play_quiz.js" defer></script>
+<link rel='stylesheet' href='style.css'>
 </head>
 
 {% block content %}
 <body>
-    <div class="display-cards">
+    <div class="container box">
+        <div class="display-cards">
+            <div class="content">
+                    <h1 class ="title is-1"> Who was the first president ?</h1>
+                </div>
+            <div class="right-and-wrong">
+               <a class="button is-success"><i class="fas fa-check"></i> &nbsp; Correct</a>
+                <a class="button is-danger"><i class="fas fa-times"></i> &nbsp; Incorrect</a>
+            </div>
+        </div>
     </div>
-    <div class="next-card">
+    <div class="back-arrow">
+        <nav class="level is-mobile">
+                    <div class="level-left">
+                    <a class="level-item" aria-label="reply">
+                        <span class="icon is-large">
+                       <i class="fas fa-arrow-left"></i>
+                        </span></a></div></nav>
     </div>
-    <div class="right-answers">
-    </div>
-    <div class="wrong-answers">
+    <div class="forward-arrow">
+        <nav class="level is-mobile">
+            <div class="level-right">
+            <a class="level-item" aria-label="like">
+                <span class="icon is-large">
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                </span></a></div></nav>
     </div>
 </body>
 {% endblock content %}

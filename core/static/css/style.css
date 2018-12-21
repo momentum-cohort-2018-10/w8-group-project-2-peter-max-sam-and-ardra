@@ -15,7 +15,16 @@ body{
     margin-left: 150px;
     margin-right: 150px;
     margin-bottom: 500px;
-    
-    
-    
+}
+
+.back-arrow{
+    float: left;
+    margin-top: -120px;
+    margin-left: 100px;
+}
+
+.forward-arrow{
+    float: right;
+    margin-top: -120px;
+    margin-right: 100px;
 }
