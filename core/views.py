@@ -55,6 +55,11 @@ def delete_quiz(request, pk):
     quiz.delete()
     return redirect('home')
     # return render(request, 'quizzes/quiz_detail.html',)
+def play_quiz(request, pk):
+    quiz = Quiz.objects.get(pk=pk)
+    return render(request, 'quiz_play.html', {
+        'quiz': quiz,
+    })
 
 def new_quiz(request):
     if request.method == 'POST':
@@ -96,14 +101,14 @@ def new_quiz(request):
 
 #     })
 
-def take_quiz(request, pk):
-    quiz = Quiz.objects.get(pk=pk)
-    card_list = quiz.cards.all()
-    card = card_list.first()
+# def take_quiz(request, pk):
+#     quiz = Quiz.objects.get(pk=pk)
+#     card_list = quiz.cards.all()
+#     card = card_list.first()
 
-    return render(request, 'quizzes/quiz.html', {
-        'quiz': quiz,
-        'card_list': card_list,
-        'card': card,
-    })
+#     return render(request, 'quizzes/quiz.html', {
+#         'quiz': quiz,
+#         'card_list': card_list,
+#         'card': card,
+#     })
 
