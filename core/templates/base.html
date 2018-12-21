@@ -2,19 +2,12 @@
 <!doctype html> <html>
 <head>
 <title>
-{% block title %}
-    Quizzer
-{% endblock title %}
+Quizzer
 </title>
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-<link rel="stylesheet" href="{% static 'style.css' %}"/> 
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/> 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"/>
-
-
-
-
-{% block header %}
-{% endblock header %}
+<script src="{% static 'js/jquery-3.3.1.min.js' %}" defer></script>
 </head>
 
 <body>
@@ -27,14 +20,14 @@
                             <a href="{% url 'home' %}" class="navbar-item is-active">HOME
                                 &nbsp;<i class="fas fa-home"></i></a>
                             <a class="navbar-item ">My ACCOUNT</a>
-                            <a class="navbar-item ">LOGIN</a>
-                            <div class="navbar-item">
-                                {% if user.is_authenticated %}
-                                    <a class="button is-black is-inverted" href="{% url 'auth_logout' %}">logout</a>
+                            {% if user.is_authenticated %}
+                                    <a class="navbar-item" href="{% url 'auth_logout' %}">LOGOUT</a>
                                     {% else %}
-                                    <a class="button is-black is-inverted" href="{% url 'auth_login' %}">login</a>
+                                    <a class="navbar-item" href="{% url 'auth_login' %}">LOGIN</a>
+                            <div class="navbar-item">
+                                
                                     
-                                    <a class="button is-black is-inverted" href="{% url 'registration_register' %}">Register</a>
+                                    <a class="button is-black is-rounded is-inverted" href="{% url 'registration_register' %}">Register</a>
 
                                 {% endif %} 
                             </div>
@@ -60,9 +53,9 @@
 <footer class="footer hero is-primary is-bold is-medium">
     <div class="content has-text-centered has-text-white-ter">
         
-        <a > <i class="fab fa-twitter"></i> &nbsp; </a>
-        <a > <i class="fab fa-facebook-square"></i> &nbsp; </a>
-        <a > <i class="fab fa-instagram"></i> &nbsp; </a>
+        <a > <i class="fab fa-twitter fa-3x"></i> &nbsp; </a>
+        <a > <i class="fab fa-facebook-square fa-3x"></i> &nbsp; </a>
+        <a > <i class="fab fa-instagram fa-3x"></i> &nbsp; </a>
         <p> - Peter Max Ardra Sam - </p>
     </div>
 </html>

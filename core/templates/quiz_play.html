@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<head>
+{% block title %}
+{% endblock title %}
+</head>
+
+{% block content %}
+
+<body>
+
+<script> let quizNumber = {{ quiz.id }} </script>
+<script src="{% static 'js/jquery.flip.js' %}" defer></script>
+<script src="{% static 'js/play_quiz.js' %}" defer></script>
+
+<div id='cardlist' class="container box">
+    <button id='nextcard'>another card</button>
+    <div id="card"> 
+        <div id="question" class="front"></div> 
+        <div id="answer" class="back"></div> 
+    </div>
+</div>
+        <h2 id="question" class = "subtitle"></a></h2>
+        <h2 id="answer" class = "subtitle"></h2>
+            </p>
+        </div>
+      </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    {% comment %} <div class="display-cards">
+    </div>
+    <div class="next-card">
+    </div>
+    <div class="right-answers">
+    </div>
+    <div class="wrong-answers">
+    </div> {% endcomment %}
+
+
+</body>
+{% endblock content %}
