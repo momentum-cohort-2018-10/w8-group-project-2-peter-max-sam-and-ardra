@@ -24,7 +24,7 @@ def quiz_detail(request, pk):
             card = form.save(commit=False)
             card.quiz = quiz
             card.save()
-            messages.success(request, 'On your way to learning! Would you like to add more cards?')
+            messages.success(request, 'Card Added')
             return redirect('quiz_detail', pk=quiz.pk)
         else:
             messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')

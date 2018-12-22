@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<!doctype html> <html>
+<!doctype html> <html class="has-navbar-fixed-top">
 <head>
 <title>
 Quizzer
@@ -10,11 +10,11 @@ Quizzer
 <script src="{% static 'js/jquery-3.3.1.min.js' %}" defer></script>
 </head>
 
-<body>
+<body class ="container quiz-detail ">
 
-<header class="hero is-dark is-bold is-medium">
-        <nav class="navbar">
-            <h1 class="title is-1 has-text-light"><i class="fab fa-quora"></i>UIZZER</h1>
+<header class="hero is-dark is-bold is-medium navbar is-fixed-top ">
+        <nav class="navbar navhead ">
+            <h1 class="title  has-text-light"><i class="fab fa-quora"></i>UIZZER</h1>
                     <div class="navbar-menu">
                         <div class="navbar-end">
                             <a href="{% url 'home' %}" class="navbar-item is-active">HOME
@@ -34,28 +34,31 @@ Quizzer
                         </div>
         </nav>
     </header>
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    {{ message }}
-    </div>
-    {% endfor %}
-{% endif %}
-</ul>
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+        </ul>
 
 {% block content %}{% endblock content %}
+
 {% block footer %}{% endblock footer %}
 </body>
-<footer class="footer hero is-primary is-bold is-medium">
-    <div class="content has-text-centered has-text-white-ter">
-        
-        <a > <i class="fab fa-twitter fa-3x"></i> &nbsp; </a>
-        <a > <i class="fab fa-facebook-square fa-3x"></i> &nbsp; </a>
-        <a > <i class="fab fa-instagram fa-3x"></i> &nbsp; </a>
-        <p> - Peter Max Ardra Sam - </p>
-    </div>
+    <footer class="footer hero is-primary is-bold is-medium">
+        <div class="content has-text-centered has-text-white-ter">
+            
+            <a > <i class="fab fa-twitter fa-3x"></i> &nbsp; </a>
+            <a > <i class="fab fa-facebook-square fa-3x"></i> &nbsp; </a>
+            <a > <i class="fab fa-instagram fa-3x"></i> &nbsp; </a>
+            <p> - Peter Max Ardra Sam - </p>
+        </div>
+    </footer>
+
 </html>

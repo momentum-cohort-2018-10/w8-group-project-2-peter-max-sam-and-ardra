@@ -1,75 +1,121 @@
 {% extends 'base.html' %} 
-
-
-
 {% block title %}
     Homepage - {{ block.super }} 
 {% endblock title %}
-
-
 {% block content %}
 
 
+<div class="container quiz-detail ">
 
-<h1 class="subtitle hero is-link"> Build Quiz | {{ quiz.title }} </h1>
-<div class = "container ">
-    
-    
-    
-    
-    {% comment %} <a class="subtitle " href="{% url 'new_card' pk=quiz.pk %}">Add Card
-        <span class="icon is-medium ">
-          <i class="fas fa-plus-circle"></i>
-        </span> {% endcomment %}
-        {% comment %} <a href="{% url 'new_card' pk=quiz.pk %}"<span>Add a Card!</span></a> {% endcomment %}
-      </a>
+    <div class="tile is-ancestor ">
 
-    <div class ="#">
-        <form role="form" action="" method="post" class= "title" >
-                {% csrf_token %}
-            {% comment %} <table>
-                {% for field in form %}
-                <tr class="textarea is-primary"  ><td >{{field}}</td></tr>
-                {% endfor %}
-            </table> {% endcomment %}
-        
-                {{ form.as_table }}
+        <div class="tile is-vertical is-8">
+            <div class="tile">
             
-            <button type="submit" class = "button is-rounded is-warning">Submit</button>
-        </form> 
-    </div>
-    <br>
-    <br>
-
-
-     
-<div class = "container">
-    <h1> {{ quiz.title }} </h1>
-      <a class="subtitle" href="{% url 'play_quiz' pk=quiz.pk %}">
-        <span class="icon is-medium">
-          <i class="fas fa-plus-circle"></i>
-        </span>
-        <span>Play this Quiz!</span>
-      </a>
-     <h2>Cards:</h2>
-</div>  
-    {% for card in cards %}
-      <div class = "container box">
-        <h2 class = "subtitle"> The question is: {{ card.question }} </a></h2>
-        <h2 class = "subtitle"> The answer is: {{ card.answer }} </h2>
-        <div class="controls">
-            <p>
-                <a class="button is-info" href= "{% url 'edit_card' pk=card.pk %}"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
-                <a class="button is-danger" href="{% url 'delete_card' pk=card.pk %}"> <i class="fas fa-wrench"></i> &nbsp; delete card</a>
-            </p>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                <h1 class="title  ">  {{ quiz.title }} </h1>
+                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                        <ul>
+                            <li>
+                            <a href="#">
+                                <span class="icon is-small">
+                                <i class="fas fa-play" aria-hidden="true"></i>
+                                </span>
+                                <span>Take Quiz</span>
+                            </a>
+                            </li>
+                            <li>
+                            <a href="#">
+                                <span class="icon is-small">
+                                <i class="fas fa-wrench" aria-hidden="true"></i>
+                                </span>
+                                <span> Edit Title</span>
+                            </a>
+                            </li>
+                            <li>
+                            <a href="#">
+                                <span class="icon is-small">
+                                <i class="fas fa-trash" aria-hidden="true"></i>
+                                </span>
+                                <span>Delete Quiz</span>
+                            </a>
+                            
+                        </ul>
+                        </nav>
+                
+                {% for card in cards %}
+                    <div class = "box">
+                        <h2 class = "subtitle"> <b>Question:</b> {{ card.question }} | <b>Answer:</b> {{ card.answer }}</h2>
+                        <h2 class = "subtitle">  </h2>
+                            <div class="controls">
+                                <a class="button is-small is-info is-outlined" href= "{% url 'edit_card' pk=card.pk %}"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
+                                <a class="button is-small is-outlined is-danger" href="{% url 'delete_card' pk=card.pk %}"> <i class="fas fa-trash"></i> &nbsp; delete card</a>
+                            </div>
+                    </div>
+                {% endfor %}
+                </article>
+            </div>
+            </div>
+            
         </div>
-      </div>
-    
-      
-    {% endfor %}
+        <div class="tile is-parent">
+        
+            <article class="tile is-child ">
+            <div id="add-a-card" class ="flex">
+                <article class="message is-primary">
+                    <div class="message-body">
+                        <a class="subtitle">
+                            <span class="icon is-medium has-text-primary">
+                                <i class="fas fa-plus-square"></i></span>
+                            <span>Add a card to <b>{{ quiz.title }}</b></span>
+                        
+                        </a>
+                    <form role="form" action="" method="post" class= "subtitle is-4" >
+                            {% csrf_token %}
+                            {{ form.as_table }}
+                        <br>
+                     <button type="submit" class = "button hero is-outlined  form-padding">Submit</button>   
+                    </form> 
+                        {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li class="{{ message.tags }}">{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        
+                    </div>
+                    </article>
+                    
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
 
-    <a class="button is-outlined is-danger" href="{% url 'delete_quiz' pk=quiz.pk %}"> <i class="fas fa-trash"></i> &nbsp; delete {{ quiz.title }} QUIZ</a>
+<a class="button is-outlined is-danger" href="{% url 'delete_quiz' pk=quiz.pk %}"> <i class="fas fa-trash"></i> &nbsp; delete {{ quiz.title }} QUIZ</a>
 
+<a class="subtitle   " href="{% url 'play_quiz' pk=quiz.pk %}">
+                        <span class="icon is-medium has-text-success">
+                            <i class="fas fa-play-circle"></i></span>
+                        <span>Play this Quiz!</span>
+                    </a>
      
 {% endblock content %}
 
+
+
+
+
+
+
+
+ {% comment %} <div id="add-a-card" class ="flex">
+            <form role="form" action="" method="post" class= "subtitle is-3" >
+                    {% csrf_token %}
+                    {{ form.as_table }}
+                <button type="submit" class = "button is-rounded is-warning">Submit</button>
+            </form> 
+        </div>
+        <br> {% endcomment %}
