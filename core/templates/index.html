@@ -8,37 +8,165 @@
 
 
 {% block content %}
-
+<div class="container tabs is-toggle is-toggle-rounded">
+  <ul>
+    <li class="is-active">
+      <a>
+        <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
+        <span>All Quizzes</span>
+      </a>
+    </li>
+    <li>
+      <a href="{% url 'new_quiz' %}">
+        <span class="icon is-small"><i class="fas fa-plus-circle"></i></span>
+        <span>Create A Quiz</span>
+      </a>
+    </li>
+    <li>
+      <a>
+        <span class="icon is-small"><i class="fas fa-film"></i></span>
+        <span>Videos</span>
+      </a>
+    </li>
+      <div class="tabs is-right">
+        <li >
+          <a>
+            <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
+            <span>Documents</span>
+          </a>
+        </li>
+      </div>
+  </ul>
+</div>
 
 <div class = "container">
-
-      <a class="subtitle" href="{% url 'new_quiz' %}">
-        <span class="icon is-medium">
-          <i class="fas fa-plus-circle"></i>
-        </span>
-        <span>Add a Quiz!</span>
-      </a>
-     
-</div>  
- 
-    {% paginate quizzes %}
-    {% for quiz in quizzes %}
-      <div class = "container box">
-        <h1 class = "title"> <a href="{% url 'quiz_detail' pk=quiz.pk %}">{{ quiz.title }} </a></h1>
-        <h2 class = "subtitle"> Author | {{ quiz.author }} </h2>
-        <p> Cards |  </p>
-        <p> Description | {{ quiz.description }} </p>
-        
-        <div class="controls">
-            <p >
-                <a class="button is-success" href="{% url 'play_quiz' pk=quiz.pk %}"><i class="fas fa-check"></i> &nbsp; Take The Quiz</a>
-                <a class="button is-info" href="{% url 'edit_quiz' pk=quiz.pk %}"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
-                
-        </div>
-      </div>
-    
+  <div class="tile is-ancestor ">
+    <div class="tile is-vertical is-8">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification is-light">
+            <h3 class="right"> <i class="fas fa-arrow-right"></i> Sort By: <b> Date Created</b> </h3>
+            <h1 class="title"> My Quizzes </h1>
+          {% paginate quizzes %}
+            {% for quiz in quizzes %}
+            
+            <div class="box">
       
+                <h1 class = "title"> <a href="{% url 'quiz_detail' pk=quiz.pk %}">{{ quiz.title }} </a></h1>
+                <h3 class="right"> <i class="fas fa-columns"></i> Total Cards: <b>5</b> </h3>
+                                <nav class="breadcrumb" aria-label="breadcrumbs">
+                                    <ul>
+                                        <li>
+                                        <a href="{% url 'play_quiz' pk=quiz.pk %}">
+                                            <span class="icon is-small" >
+                                            <i class="fas fa-play" aria-hidden="true"></i>
+                                            </span>
+                                            <span>Take Quiz</span>
+                                        </a>
+                                        </li>
+                                        <li>
+                                        <a href="{% url 'quiz_detail' pk=quiz.pk %}">
+                                            <span class="icon is-small">
+                                            <i class="fas fa-wrench" aria-hidden="true"></i>
+                                            </span>
+                                            <span> Quiz Detail </span>
+                                        </a>
+                                        </li>
+                                        
+                                        
+                                    </ul>
+                                    </nav>
+                
+                </div>
+
     {% endfor %}
+          </article>
+          <article class="tile is-child notification is-warning">
+            <p class="title"> Room for more Content </p>
+            <p class="subtitle"> More user features</p>
+          </article>
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child notification is-light">
+      {% comment %} SIDEBAR  {% endcomment %}
+        <div class="content">
+          <p class="title ">My Dashboard</p>
+{% comment %} account picture with text {% endcomment %}
+            <article class="media">
+              <figure class="media-left ">
+                <p class="image is-64x64">
+                  <img class="is-rounded" src="https://3.bp.blogspot.com/-qDc5kIFIhb8/UoJEpGN9DmI/AAAAAAABl1s/BfP6FcBY1R8/s1600/BlueHead.jpg">
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <p>
+                    <strong>John Smith</strong> <small>@johnsmith</small> 
+                  </p>
+                </div>
+              </div>
+            </article>
+          
+          <div class="content">
+            <nav class="panel">
+  
+              <div class="panel-block">
+                <p class="control has-icons-left">
+                  <input class="input" type="text" placeholder="search my quizzes">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                  </span>
+                </p>
+                
+
+          </div>
+          <div class="panel-block">
+            <button class="button is-link is-outlined is-fullwidth">
+              Search
+            </button>
+          </div>
+          <br>
+          
+          <a class="panel-block is-active">
+            <span class="panel-icon">
+              <i class="fas fa-star" aria-hidden="true"></i>
+            </span>
+            My Favorites
+          </a>
+          <a class="panel-block">
+            <span class="panel-icon">
+              <i class="fas fa-wrench" aria-hidden="true"></i>
+            </span>
+            Edit My Account
+          </a>
+          <a class="panel-block">
+            <span class="panel-icon">
+              <i class="fas fa-share" aria-hidden="true"></i>
+            </span>
+            Share A Quiz
+          </a>
+          
+          
+          
+        </nav>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
     {% show_pages %}
 
 {% endblock content %}

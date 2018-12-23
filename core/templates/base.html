@@ -19,7 +19,6 @@ Quizzer
                         <div class="navbar-end">
                             <a href="{% url 'home' %}" class="navbar-item is-active">HOME
                                 &nbsp;<i class="fas fa-home"></i></a>
-                            <a class="navbar-item ">My ACCOUNT</a>
                             {% if user.is_authenticated %}
                                     <a class="navbar-item" href="{% url 'auth_logout' %}">LOGOUT</a>
                                     {% else %}
@@ -48,6 +47,11 @@ Quizzer
             {% endfor %}
         {% endif %}
         </ul>
+
+
+
+
+
 
 {% block content %}{% endblock content %}
 {% block footer %}{% endblock footer %}

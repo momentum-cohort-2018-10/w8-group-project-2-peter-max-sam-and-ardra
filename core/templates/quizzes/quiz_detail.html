@@ -44,12 +44,12 @@
                                     </nav>
                 
                                 {% for card in cards %}
-                                    <div class = "box">
+                                    <div class = "box has-background-light">
                                         <h2 class = "subtitle"> <b>Question:</b> {{ card.question }} | <b>Answer:</b> {{ card.answer }}</h2>
                                         <h2 class = "subtitle">  </h2>
                                             <div class="controls">
-                                                <a class="button is-small is-info is-outlined" href= "{% url 'edit_card' pk=card.pk %}"> <i class="fas fa-wrench"></i> &nbsp; Edit</a>
-                                                <a class="button is-small is-outlined is-danger" href="{% url 'delete_card' pk=card.pk %}"> <i class="fas fa-trash"></i> &nbsp; delete card</a>
+                                                <a class="button is-small is-info is-outlined" href= "{% url 'edit_card' pk=card.pk %}"> <i class="fas fa-wrench"></i> &nbsp; Edit Card</a>
+                                                <a class="button is-small is-outlined is-danger" href="{% url 'delete_card' pk=card.pk %}"> <i class="fas fa-trash"></i> &nbsp; Delete Card</a>
                                             </div>
                                     </div>
                                 {% endfor %}
@@ -87,7 +87,8 @@
                                                     {% if messages %}
                                                         <ul class="messages">
                                                             {% for message in messages %}
-                                                            <li class="{{ message.tags }}">{{ message }}</li>
+                                                            <li class="{{ message.tags }}"> {{ message }}</li>
+                                                            
                                                             {% endfor %}
                                                         </ul>
                                                         {% endif %}

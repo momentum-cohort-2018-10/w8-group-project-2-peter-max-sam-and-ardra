@@ -57,6 +57,7 @@ def delete_quiz(request, pk):
     quiz.delete()
     return redirect('home')
     # return render(request, 'quizzes/quiz_detail.html',)
+
 def play_quiz(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     return render(request, 'quiz_play.html', {
@@ -82,30 +83,7 @@ def new_quiz(request):
         "form": form,
     })
 
-#     if request.method == 'POST':
-#         form = CardForm(request.POST)
-#         if form.is_valid():
-#             card = form.save(commit=False)
-#             card.quiz = this_quiz
-#             card.save()
-#             return redirect('home')
-#             # return redirect('quiz_detail', pk=this_quiz.pk)
 
-#     else:
-#         form = CardForm()
-
-#     return render(request, 'quizzes/quiz_detail.html', {
-
-#         "form": form,
-#         "this_quiz": this_quiz,
-#         "cards": cards,
-
-#     })
-
-# def take_quiz(request, pk):
-#     quiz = Quiz.objects.get(pk=pk)
-#     card_list = quiz.cards.all()
-#     card = card_list.first()
 
 def edit_quiz(request, pk):
     quiz = Quiz.objects.get(pk=pk)
@@ -123,12 +101,15 @@ def edit_quiz(request, pk):
 
 def edit_card(request, pk):
     card = Card.objects.get(pk=pk)
+    form_id = card.quiz.id
     form_class = CardForm
+    
     if request.method =='POST':
         form = form_class(data=request.POST, instance=card)
         if form.is_valid():
             form.save()
-            return redirect('quiz_detail', pk=card.pk)
+            # return redirect('home')
+            return redirect('quiz_detail', pk=form_id)
 
     else:
         form = form_class(instance=card)
