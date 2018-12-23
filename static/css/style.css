@@ -1,21 +1,21 @@
 body{
-    margin: 100px;
-    padding: 100px;
+    /* margin: 100px;
+    padding: 100px; */
+    
+
     
 }
+
+
 .right {
     float: right;
-    /* width: 300px;
-    padding: 10px; */
   }
-
 
 .top{
     margin-top: 60px;
     margin-left: 150px;
     margin-right: 150px;
     margin-bottom: 500px;
-
 }
 
 .navhead{
@@ -26,27 +26,23 @@ body{
 }
 
 .quiz-detail{
-    margin-top: 30px;
-    
-    padding-top: 30px;
-    
-    margin-bottom: 30px;
-
+    margin-top: 10px;
+    padding-top: 20px;  
+    margin-bottom: 10px;
+    padding-bottom: 20px; 
 }
 
 .form-padding{
     margin-top: 30px; 
     padding-top: 30px;
     margin-bottom: 30px;
-
 }
-
 
 textarea {
     width: 400px;
     height: 45px;
     border-radius: 5px;
-    font-size: 24px;
+    font-size: 20px;
     font-family: Times, serif
     
 }

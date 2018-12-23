@@ -10,9 +10,9 @@ Quizzer
 <script src="{% static 'js/jquery-3.3.1.min.js' %}" defer></script>
 </head>
 
-<body class ="container quiz-detail ">
+<body class="quiz-detail">
 
-<header class="hero is-dark is-bold is-medium navbar is-fixed-top ">
+    <header class="hero is-dark is-bold is-medium navbar is-fixed-top ">
         <nav class="navbar navhead ">
             <h1 class="title  has-text-light"><i class="fab fa-quora"></i>UIZZER</h1>
                     <div class="navbar-menu">
@@ -24,14 +24,15 @@ Quizzer
                                     <a class="navbar-item" href="{% url 'auth_logout' %}">LOGOUT</a>
                                     {% else %}
                                     <a class="navbar-item" href="{% url 'auth_login' %}">LOGIN</a>
-                            <div class="navbar-item">
-                                
+                                <div class="navbar-item">
                                     
-                                    <a class="button is-black is-rounded is-inverted" href="{% url 'registration_register' %}">Register</a>
+                                        
+                                        <a class="button is-black is-rounded is-inverted" href="{% url 'registration_register' %}">Register</a>
 
-                                {% endif %} 
-                            </div>
+                                    {% endif %} 
+                                </div>
                         </div>
+                    </div>
         </nav>
     </header>
         {% if messages %}
@@ -43,14 +44,15 @@ Quizzer
                 </button>
             {{ message }}
             </div>
+            
             {% endfor %}
         {% endif %}
         </ul>
 
 {% block content %}{% endblock content %}
-
 {% block footer %}{% endblock footer %}
 </body>
+
     <footer class="footer hero is-primary is-bold is-medium">
         <div class="content has-text-centered has-text-white-ter">
             
@@ -60,5 +62,6 @@ Quizzer
             <p> - Peter Max Ardra Sam - </p>
         </div>
     </footer>
+
 
 </html>
