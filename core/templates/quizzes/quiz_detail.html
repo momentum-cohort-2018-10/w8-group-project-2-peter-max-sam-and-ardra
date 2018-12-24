@@ -4,14 +4,45 @@
 {% endblock title %}
 {% block content %}
 
+<div class="title container tabs is-toggle-rounded ">
+  <ul>
+    <li >
+      <a class="has-text-grey-lighter" href="{% url 'home' %}">
+        <span class="icon is-small "><i class="fas fa-arrow-left"></i></span>
+        <span>Go Back</span>
+      </a>
+    </li >
+    <li class="is-active ">
+      <a class="has-text-grey-lighter" >
+        <span class="icon is-small"><i class="fas fa-edit"></i></span>
+        <span>Editing "{{quiz.title}}" </span>
+      </a>
+    </li>
+    <li>
+      <a class="has-text-grey-lighter" href="{% url 'new_quiz' %}">
+        <span class="icon is-small"><i class="fas fa-plus-circle"></i></span>
+        <span>Add Quiz</span>
+      </a>
+    </li>
+      <div class="tabs is-right">
+        <li >
+          <a class="has-text-grey-lighter">
+            <span class="icon is-small"><i class="fas fa-arrow-right"></i></span>
+            <span>Next Quiz</span>
+          </a>
+        </li>
+      </div>
+  </ul>
+</div>
 
-<div class="container quiz-detail ">
+
+<div class="container ">
     <div class="tile is-ancestor ">
         <div class="tile is-vertical is-8">
             <div class="tile">
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                        <h1 class="title "> <i> {{ quiz.title }} </i> </h1>
+                <div class="tile is-parent ">
+                    <article class="tile is-child box has-background-light">
+                        <h1 class="title is-1 "> <i> {{ quiz.title }} </i> </h1>
                             <h3 class="right"> <i class="fas fa-columns"></i> Total Cards: <b>5</b> </h3>
                                 <nav class="breadcrumb" aria-label="breadcrumbs">
                                     <ul>
@@ -44,7 +75,7 @@
                                     </nav>
                 
                                 {% for card in cards %}
-                                    <div class = "box has-background-light">
+                                    <div class = "box ">
                                         <h2 class = "subtitle"> <b>Question:</b> {{ card.question }} | <b>Answer:</b> {{ card.answer }}</h2>
                                         <h2 class = "subtitle">  </h2>
                                             <div class="controls">
@@ -69,12 +100,12 @@
 
                                     <!-- Add card form plus message v -->
                                             <div class="message-body">
-                                                    <a class="subtitle">
+                                                    
                                                         <span class="icon is-medium has-text-primary">
                                                             <i class="fas fa-plus-square"></i></span>
                                                         <span>Add a card to <b>{{ quiz.title }}</b></span>
                                                     
-                                                    </a>
+                                                    
                                                 <form role="form" action="" method="post" class= "subtitle is-4" >
                                                         {% csrf_token %}
                                                         {{ form.as_table }}
@@ -107,6 +138,10 @@
     
 
 </div>
+<br>
+<br>
+<br>
+
 
 
 

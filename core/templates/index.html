@@ -8,29 +8,29 @@
 
 
 {% block content %}
-<div class="container tabs is-toggle is-toggle-rounded">
+<div class="title container tabs is-toggle-rounded ">
   <ul>
-    <li class="is-active">
-      <a>
-        <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
+    <li class="is-active ">
+      <a class="has-text-grey-lighter">
+        <span class="icon is-small "><i class="fas fa-file-alt"></i></span>
         <span>All Quizzes</span>
       </a>
     </li>
     <li>
-      <a href="{% url 'new_quiz' %}">
+      <a class="has-text-grey-lighter" href="{% url 'new_quiz' %}">
         <span class="icon is-small"><i class="fas fa-plus-circle"></i></span>
         <span>Create A Quiz</span>
       </a>
     </li>
     <li>
-      <a>
+      <a class="has-text-grey-lighter">
         <span class="icon is-small"><i class="fas fa-film"></i></span>
-        <span>Videos</span>
+        <span>Random Quiz</span>
       </a>
     </li>
       <div class="tabs is-right">
         <li >
-          <a>
+          <a class="has-text-grey-lighter">
             <span class="icon is-small"><i class="fas fa-file-alt"></i></span>
             <span>Documents</span>
           </a>
@@ -81,9 +81,10 @@
 
     {% endfor %}
           </article>
-          <article class="tile is-child notification is-warning">
-            <p class="title"> Room for more Content </p>
-            <p class="subtitle"> More user features</p>
+          <article class="is-child notification has-background-grey-light">
+          <div class="subtitle ">
+            {% show_pages %}
+            </div>
           </article>
         </div>
         
@@ -94,7 +95,7 @@
       <article class="tile is-child notification is-light">
       {% comment %} SIDEBAR  {% endcomment %}
         <div class="content">
-          <p class="title ">My Dashboard</p>
+          <p class="title border-bottom">My Dashboard</p>
 {% comment %} account picture with text {% endcomment %}
             <article class="media">
               <figure class="media-left ">
@@ -159,6 +160,8 @@
     </div>
   </div>
 </div>
+<br>
+<br>
 
 
 
@@ -166,8 +169,7 @@
 
 
 
-
-    {% show_pages %}
+    
 
 {% endblock content %}
 

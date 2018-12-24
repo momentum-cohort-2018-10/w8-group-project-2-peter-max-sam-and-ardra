@@ -1,6 +1,6 @@
 body{
     
-    background-color: gainsboro
+    background-color:black
     
 }
 
@@ -20,7 +20,6 @@ body{
     margin-top:5px;
     margin-left: 50px;
     margin-right: 100px;
-
 }
 
 .quiz-detail{
@@ -37,7 +36,7 @@ body{
 }
 
 textarea {
-    width: 400px;
+    width: 350px;
     height: 45px;
     border-radius: 5px;
     font-size: 20px;
@@ -45,3 +44,8 @@ textarea {
     
 }
 
+.border-bottom {
+    border-bottom-color: black;
+    border-bottom: 1px
+
+}
