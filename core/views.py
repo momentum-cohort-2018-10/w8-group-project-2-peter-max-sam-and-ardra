@@ -6,10 +6,15 @@ from django.contrib import messages
 
 # Create your views here.
 def index(request):
-    quizzes = Quiz.objects.all()
-    return render(request, "index.html", {
-        'quizzes': quizzes,
-    })
+    if not request.user.is_authenticated:
+        return render(request, "sign_in.html")
+
+    else:
+
+        quizzes = Quiz.objects.all()
+        return render(request, "index.html", {
+            'quizzes': quizzes,
+        })
 
 def account(request):
     return render(request, "account.html")

@@ -12,16 +12,18 @@ Quizzer
 <script src="{% static 'js/jquery-3.3.1.min.js' %}" defer></script>
 </head>
 
-<body class="quiz-detail">
-
-
-    <header class="hero is-primary is-bold is-medium navbar is-fixed-top avenir ">
+<header class="avenir">
+  <div class="cover bg-left bg-center-l" style="background-image: url(https://neuropharmlabs.com/wp-content/uploads/2015/01/neuropharm-flash-cards.jpeg)">
+    <div class="bg-black-80 pb5 pb6-m pb7-l">
+      <nav class="dt w-100 mw8 center"> 
+        
+        <div class="dtc v-mid tr pa3">
+            <header class="hero is-primary is-bold is-medium navbar is-fixed-top avenir ">
         <nav class="navbar navhead ">
-            <h1 class="title  has-text-light"><i class="fas fa-book"></i>  QUIZZER</h1>
+            <h1 class="title  has-text-light"><i class="fas fa-book"></i>   QUIZZER</h1>
                     <div class="navbar-menu">
                         <div class="navbar-end">
-                            <a href="{% url 'home' %}" class="navbar-item is-active">HOME
-                                &nbsp;<i class="fas fa-home"></i></a>
+                            
                             {% if user.is_authenticated %}
                                     <a class="navbar-item" href="{% url 'auth_logout' %}">LOGOUT</a>
                                     {% else %}
@@ -37,27 +39,22 @@ Quizzer
                     </div>
         </nav>
     </header>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            {{ message }}
-            </div>
-            
-            {% endfor %}
-        {% endif %}
-        </ul>
 
 
 
+        </div>
+      </nav> 
+      <div class="tc-l mt4 mt5-m mt6-l ph3 avenir">
+        <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">The Next Level Of Quizzing</h1>
+        <h2 class="fw1 f3 white-80 mt3 mb4">Create Flashcards, Build Quizzes, and learn faster with Quizzers learning tools</h2>
+        <a class="button is-outlined is-rounded" href="{% url 'auth_login' %}">Login</a>
+        <span class="dib v-mid ph3 white-70 mb3">or</span>
+        <a class="button is-outlined is-rounded" href="{% url 'registration_register' %}">Create New Account</a>
+      </div>
+    </div>
+  </div> 
+</header>
 
-
-
-{% block content %}{% endblock content %}
-{% block footer %}{% endblock footer %}
 </body>
 
     <footer class="footer hero is-primary is-bold is-small">
@@ -69,6 +66,5 @@ Quizzer
             <p> - Peter Max Ardra Sam - </p>
         </div>
     </footer>
-
 
 </html>

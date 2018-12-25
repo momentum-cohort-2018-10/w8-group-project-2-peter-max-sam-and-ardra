@@ -21,14 +21,14 @@
   </ul>
 </div>
 
-<div class ="box container has-background-grey-lighter avenir"> 
+<div class ="box container has-background-light avenir"> 
     <h2>New Quiz</h2>
     <form method="POST" class="quiz-form title is-1 ">{% csrf_token %}
         {{ form.as_p }}
         <br>
 
 
-        <button type="submit" class=" button is-warning is-rounded ">Save</button>
+        <button type="submit" class=" button  is-outlined ">Save</button>
     </form>
 </div>
 
