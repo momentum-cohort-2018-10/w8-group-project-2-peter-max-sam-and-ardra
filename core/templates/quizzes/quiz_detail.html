@@ -4,7 +4,7 @@
 {% endblock title %}
 {% block content %}
 
-<div class="title container tabs is-toggle-rounded ">
+<div class="title container tabs is-toggle-rounded avenir">
   <ul>
     <li >
       <a class="has-text-grey-lighter" href="{% url 'home' %}">
@@ -36,7 +36,7 @@
 </div>
 
 
-<div class="container ">
+<div class="container avenir ">
     <div class="tile is-ancestor ">
         <div class="tile is-vertical is-8">
             <div class="tile">
@@ -75,7 +75,7 @@
                                     </nav>
                 
                                 {% for card in cards %}
-                                    <div class = "box ">
+                                    <div class = "box avenir">
                                         <h2 class = "subtitle"> <b>Question:</b> {{ card.question }} | <b>Answer:</b> {{ card.answer }}</h2>
                                         <h2 class = "subtitle">  </h2>
                                             <div class="controls">
@@ -92,14 +92,14 @@
         
         <!-- Card for loop ^ -->
 
-            <div class="tile is-parent">
+            <div class="tile is-parent avenir">
             
                 <article class="tile is-child ">
                     <div id="add-a-card" class ="flex">
                         <article class="message is-primary">
 
                                     <!-- Add card form plus message v -->
-                                            <div class="message-body">
+                                            <div class="message-body avenir">
                                                     
                                                         <span class="icon is-medium has-text-primary">
                                                             <i class="fas fa-plus-square"></i></span>
@@ -118,14 +118,17 @@
                                                     {% if messages %}
                                                         <ul class="messages">
                                                             {% for message in messages %}
-                                                            <li class="{{ message.tags }}"> {{ message }}</li>
+                                                            <li class="{{ message.tags }}"> {{ message }}: </li>
+                                                            
                                                             
                                                             {% endfor %}
+                                                            
                                                         </ul>
                                                         {% endif %}
+                                                        
                                                 
                                             </div>
-                                        
+                                       
                         
                         
                         </article>

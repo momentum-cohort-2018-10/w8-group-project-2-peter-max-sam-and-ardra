@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="title container tabs is-toggle-rounded ">
+<div class="title container tabs is-toggle-rounded avenir">
   <ul>
     <li >
       <a class="has-text-grey-lighter" href="{% url 'home' %}">
@@ -21,12 +21,26 @@
   </ul>
 </div>
 
-<div class ="box container has-background-grey-lighter"> 
+<div class ="box container has-background-grey-lighter avenir"> 
     <h2>New Quiz</h2>
     <form method="POST" class="quiz-form title is-1 ">{% csrf_token %}
         {{ form.as_p }}
+        <br>
+
+
         <button type="submit" class=" button is-warning is-rounded ">Save</button>
     </form>
 </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 {% endblock %}

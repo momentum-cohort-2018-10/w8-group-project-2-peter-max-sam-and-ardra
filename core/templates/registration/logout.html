@@ -8,3 +8,41 @@ Logout - {{ block.super }}
 <h1>Logged Out</h1>
 <p>You have been logged out!</p> 
 {% endblock content %}
+
+
+
+<div class="title container tabs is-toggle-rounded avenir">
+  <ul>
+    <li >
+      <a class="has-text-grey-lighter" href="{% url 'home' %}">
+        <span class="icon is-small "><i class="fas fa-arrow-left"></i></span>
+        <span>Logged Out</span>
+      </a>
+    </li >
+   
+    <li class="is-active ">
+      <a class="has-text-grey-lighter">
+        <span class="icon is-small"><i class="fas fa-check"></i></span>
+        <span>Login</span>
+      </a>
+    </li>
+      
+  </ul>
+</div>
+
+<div class ="box container has-background-grey-lighter avenir"> 
+     <h1 class= "title"> Successfully Logged Out! </h1>
+    <form role="form" action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button class= " button is-rounded is-warning" type="submit">Submit</button>
+    </form>
+
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

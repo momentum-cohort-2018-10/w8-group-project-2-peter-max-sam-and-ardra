@@ -8,7 +8,7 @@
 
 
 {% block content %}
-<div class="title container tabs is-toggle-rounded ">
+<div class="title container tabs is-toggle-rounded avenir ">
   <ul>
     <li class="is-active ">
       <a class="has-text-grey-lighter">
@@ -46,11 +46,11 @@
         <div class="tile is-parent is-vertical">
           <article class="tile is-child notification is-light">
             <h3 class="right"> <i class="fas fa-arrow-right"></i> Sort By: <b> Date Created</b> </h3>
-            <h1 class="title"> My Quizzes </h1>
+            <h1 class="title avenir"> My Quizzes </h1>
           {% paginate quizzes %}
             {% for quiz in quizzes %}
             
-            <div class="box">
+            <div class="box avenir">
       
                 <h1 class = "title"> <a href="{% url 'quiz_detail' pk=quiz.pk %}">{{ quiz.title }} </a></h1>
                 <h3 class="right"> <i class="fas fa-columns"></i> Total Cards: <b>5</b> </h3>
@@ -81,7 +81,7 @@
 
     {% endfor %}
           </article>
-          <article class="is-child notification has-background-grey-light">
+          <article class="is-child notification has-background-grey-light ">
           <div class="subtitle ">
             {% show_pages %}
             </div>
@@ -94,7 +94,7 @@
     <div class="tile is-parent">
       <article class="tile is-child notification is-light">
       {% comment %} SIDEBAR  {% endcomment %}
-        <div class="content">
+        <div class="content avenir">
           <p class="title border-bottom">My Dashboard</p>
 {% comment %} account picture with text {% endcomment %}
             <article class="media">
@@ -106,7 +106,7 @@
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <strong>John Smith</strong> <small>@johnsmith</small> 
+                    <strong>{{user}}</strong> <small>@{{user}}</small> 
                   </p>
                 </div>
               </div>

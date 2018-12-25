@@ -40,7 +40,18 @@ textarea {
     height: 45px;
     border-radius: 5px;
     font-size: 20px;
-    font-family: Times, serif
+    font-family: Times, serif;
+    
+    
+}
+
+input {
+    width: 350px;
+    height: 45px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: Times, serif;
+    
     
 }
 

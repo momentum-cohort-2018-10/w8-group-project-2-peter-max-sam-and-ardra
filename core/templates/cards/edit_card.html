@@ -4,10 +4,63 @@
 {% endblock title %}
 
 {% block content %}
+
+
+<div class="title container tabs is-toggle-rounded avenir">
+  <ul>
+    <li >
+      <a class="has-text-grey-lighter" href="{% url 'home' %}">
+        <span class="icon is-small "><i class="fas fa-arrow-left"> </i></span>
+        <span>Go Back</span>
+      </a>
+    </li >
+   
+    <li class="is-active ">
+      <a class="has-text-grey-lighter" href= "{% url 'edit_card' pk=card.pk %}">
+        <span class="icon is-small"><i class="fas fa-edit"></i></span>
+        <span>Edit Card</span>
+      </a>
+    </li>
+      
+  </ul>
+</div>
+
+<div class ="box container has-background-grey-lighter avenir"> 
+     <h1 class= "title"> Edit Card{{ quiz.title }}</h1>
+    <form role="form" action="" method="post" class="subtitle">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <br>
+        <br>
+        <br>
+
+        <button class= " button is-rounded is-warning" type="submit">Submit</button>
+    </form>
+
+
+    
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+{% endblock %}
+
+
+{% comment %} 
     <h1>Edit Flashcard</h1>
     <form role="form" action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Submit</button>
-    </form>
-{% endblock %}
+    </form> {% endcomment %}
