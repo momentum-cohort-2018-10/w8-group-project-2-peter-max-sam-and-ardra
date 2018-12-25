@@ -29,10 +29,10 @@ def new_quiz(request):
             quiz = form.save(commit=False)
             quiz.author = request.user
             quiz.save()
-            messages.success(request, 'A new quiz has been made! Now add some cards.')
+            messages.success(request, 'Select an option below.')
             return redirect('home')
-        else:
-            messages.warning(request, 'Sorry, something went wrong. Please try again!')
+        # else:
+        #     messages.warning(request, 'Sorry, something went wrong. Please try again!')
     else:
         form = QuizForm()
 
@@ -49,10 +49,10 @@ def new_card(request, pk):
             card = form.save(commit=False)
             card.quiz = this_quiz
             card.save()
-            messages.success(request, 'On your way to learning! Would you like to add more cards?')
+            messages.success(request, 'Select the plus sign below to add a card!')
             return redirect('quiz_detail', pk=this_quiz.pk)
-        else:
-            messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
+        # else:
+        #     messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
 
     else:
         form = CardForm()
