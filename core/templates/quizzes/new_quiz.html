@@ -2,12 +2,45 @@
 
 {% block content %}
 
-<div class ="box media-right"> 
+<div class="title container tabs is-toggle-rounded avenir">
+  <ul>
+    <li >
+      <a class="has-text-grey-lighter" href="{% url 'home' %}">
+        <span class="icon is-small "><i class="fas fa-arrow-left"></i></span>
+        <span>Go Back</span>
+      </a>
+    </li >
+   
+    <li class="is-active ">
+      <a class="has-text-grey-lighter" href="{% url 'new_quiz' %}">
+        <span class="icon is-small"><i class="fas fa-plus-circle"></i></span>
+        <span>Create a Quiz</span>
+      </a>
+    </li>
+      
+  </ul>
+</div>
+
+<div class ="box container has-background-light avenir"> 
     <h2>New Quiz</h2>
     <form method="POST" class="quiz-form title is-1 ">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class=" button is-warning is-rounded ">Save</button>
+        <br>
+
+
+        <button type="submit" class=" button  is-outlined ">Save</button>
     </form>
 </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 {% endblock %}

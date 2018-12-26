@@ -4,10 +4,56 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>Edit {{ quiz.title }}</h1>
+   
+
+
+
+<div class="title container tabs is-toggle-rounded avenir">
+  <ul>
+    <li >
+      <a class="has-text-grey-lighter" href="{% url 'home' %}">
+        <span class="icon is-small "><i class="fas fa-arrow-left"> </i></span>
+        <span>Go Back</span>
+      </a>
+    </li >
+   
+    <li class="is-active ">
+      <a class="has-text-grey-lighter" href="{% url 'new_quiz' %}">
+        <span class="icon is-small"><i class="fas fa-edit"></i></span>
+        <span>Edit {{ quiz.title }}</span>
+      </a>
+    </li>
+      
+  </ul>
+</div>
+
+<div class ="box container has-background-light avenir"> 
+     <h1 class= "title"> Edit {{ quiz.title }}</h1>
     <form role="form" action="" method="post">
         {% csrf_token %}
         {{ form.as_p}}
-        <button type="submit">Submit</button>
+        <br>
+        <br>
+        <br>
+        <button class= " button is-outlined " type="submit">Submit</button>
     </form>
+
+
+    
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
 {% endblock %}
+

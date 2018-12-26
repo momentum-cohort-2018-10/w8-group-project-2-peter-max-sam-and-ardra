@@ -6,10 +6,15 @@ from django.contrib import messages
 
 # Create your views here.
 def index(request):
-    quizzes = Quiz.objects.all()
-    return render(request, "index.html", {
-        'quizzes': quizzes,
-    })
+    if not request.user.is_authenticated:
+        return render(request, "sign_in.html")
+
+    else:
+
+        quizzes = Quiz.objects.all()
+        return render(request, "index.html", {
+            'quizzes': quizzes,
+        })
 
 def account(request):
     return render(request, "account.html")
@@ -24,7 +29,7 @@ def quiz_detail(request, pk):
             card = form.save(commit=False)
             card.quiz = quiz
             card.save()
-            messages.success(request, 'On your way to learning! Would you like to add more cards?')
+            messages.success(request, 'Card Added')
             return redirect('quiz_detail', pk=quiz.pk)
         else:
             messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
@@ -57,6 +62,7 @@ def delete_quiz(request, pk):
     quiz.delete()
     return redirect('home')
     # return render(request, 'quizzes/quiz_detail.html',)
+
 def play_quiz(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     return render(request, 'quiz_play.html', {
@@ -70,10 +76,10 @@ def new_quiz(request):
             quiz = form.save(commit=False)
             quiz.author = request.user
             quiz.save()
-            messages.success(request, 'A new quiz has been made! Now add some cards.')
+            messages.success(request, 'Select an option below.')
             return redirect('home')
-        else:
-            messages.warning(request, 'Sorry, something went wrong. Please try again!')
+        # else:
+        #     messages.warning(request, 'Sorry, something went wrong. Please try again!')
     else:
         form = QuizForm()
 
@@ -82,30 +88,7 @@ def new_quiz(request):
         "form": form,
     })
 
-#     if request.method == 'POST':
-#         form = CardForm(request.POST)
-#         if form.is_valid():
-#             card = form.save(commit=False)
-#             card.quiz = this_quiz
-#             card.save()
-#             return redirect('home')
-#             # return redirect('quiz_detail', pk=this_quiz.pk)
 
-#     else:
-#         form = CardForm()
-
-#     return render(request, 'quizzes/quiz_detail.html', {
-
-#         "form": form,
-#         "this_quiz": this_quiz,
-#         "cards": cards,
-
-#     })
-
-# def take_quiz(request, pk):
-#     quiz = Quiz.objects.get(pk=pk)
-#     card_list = quiz.cards.all()
-#     card = card_list.first()
 
 def edit_quiz(request, pk):
     quiz = Quiz.objects.get(pk=pk)
@@ -113,6 +96,14 @@ def edit_quiz(request, pk):
     if request.method == 'POST':
         form = form_class(data=request.POST, instance=quiz)
         if form.is_valid():
+            card = form.save(commit=False)
+            card.quiz = this_quiz
+            card.save()
+            messages.success(request, 'Select the plus sign below to add a card!')
+            return redirect('quiz_detail', pk=this_quiz.pk)
+        # else:
+        #     messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
+
             form.save()
             return redirect("quiz_detail", pk=quiz.pk)
     
@@ -123,12 +114,15 @@ def edit_quiz(request, pk):
 
 def edit_card(request, pk):
     card = Card.objects.get(pk=pk)
+    form_id = card.quiz.id
     form_class = CardForm
+    
     if request.method =='POST':
         form = form_class(data=request.POST, instance=card)
         if form.is_valid():
             form.save()
-            return redirect('quiz_detail', pk=card.pk)
+            # return redirect('home')
+            return redirect('quiz_detail', pk=form_id)
 
     else:
         form = form_class(instance=card)

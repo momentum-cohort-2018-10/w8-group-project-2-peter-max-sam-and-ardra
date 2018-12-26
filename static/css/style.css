@@ -1,25 +1,62 @@
 body{
-    margin: 100px;
-    padding: 100px;
+    
+    background-color:black
     
 }
+
+
 .right {
     float: right;
-    /* width: 300px;
-    padding: 10px; */
   }
-
 
 .top{
     margin-top: 60px;
     margin-left: 150px;
     margin-right: 150px;
     margin-bottom: 500px;
+}
 
+.navhead{
+    margin-top:5px;
+    margin-left: 50px;
+    margin-right: 100px;
+}
+
+.quiz-detail{
+    margin-top: 10px;
+    padding-top: 20px;  
+    margin-bottom: 10px;
+    padding-bottom: 20px; 
+}
+
+.form-padding{
+    margin-top: 30px; 
+    padding-top: 30px;
+    margin-bottom: 30px;
 }
 
 textarea {
-    width: 400px;
+    width: 350px;
     height: 45px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: Times, serif;
+    
+    
 }
 
+input {
+    width: 350px;
+    height: 45px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: Times, serif;
+    
+    
+}
+
+.border-bottom {
+    border-bottom-color: black;
+    border-bottom: 1px
+
+}
