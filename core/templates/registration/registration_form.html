@@ -27,7 +27,10 @@ Registration Form - {{ block.super }}
 </div>
 
 <div class ="box container has-background-grey-lighter avenir"> 
+      <h2 class="subtitle has-text-dark"><i class="fas fa-book"></i>  QUIZZER</h2>
      <h1 class= "title"> Register Account</h1>
+     
+     
     <form role="form" action="" method="post">
         {% csrf_token %}
         {{ form.as_p}}
