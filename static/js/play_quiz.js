@@ -7,6 +7,12 @@ function quizhtml (card) {
     `
 }
 
+function redoQuiz () {
+    return `
+    <button id='redobutton'>play again?</button>
+    `
+}
+
 function randCard(max) {
     return Math.floor(Math.random() * Math.floor(max));
 }
@@ -17,18 +23,38 @@ let cardList = document.getElementById('card')
 let cardQuestion = document.getElementById('question')
 let cardAnswer = document.getElementById('answer')
 
+let cardPile = []
+let usedPile = []
 
 function loadQuizData () {
+    console.log('loading!')
     $.get(`/api/quizzes/${quizNum}`)
       .then(function (quiz) {
-        let numOfCards = randCard(quiz.cards.length)
-        console.log(numOfCards)
-        const cardPile = (quiz.cards)
-        console.log(cardPile[1])
-        let currentCard = quiz.cards[numOfCards]
-        cardList.innerHTML = quizhtml(currentCard)
-        $('.back').hide();
+        cardPile = (quiz.cards)
+        usedPile = []
+        flipThroughCards()
     })
+}
+
+function flipThroughCards () {
+    console.log('flipping!')
+    if (cardPile.length == 0) {
+        cardList.innerHTML = redoQuiz()
+        let redo = document.getElementById('redobutton')
+        redo.addEventListener('click', function (event) {
+            loadQuizData()
+        })
+    } else {
+        let numOfCards = randCard(cardPile.length)
+        let currentCard = cardPile[numOfCards]
+        cardList.innerHTML = quizhtml(currentCard)
+        usedPile.push(currentCard)
+        cardPile.splice(numOfCards, 1)
+        console.log(numOfCards)
+        console.log(cardPile)
+        console.log(usedPile)
+        $('.back').hide();
+  }
 }
 
     //     for (card of quiz.cards) {
@@ -43,19 +69,17 @@ function loadQuizData () {
 
 
 $('#nextcard').on("click", function() {
-    loadQuizData();
+    flipThroughCards();
 });
 
 $('#card').on("click", function() {
     flipover();
 });
 
-// function loadRandomArray () {
-//     $.get(`/api/quizzes/${quizNum}`)
-//       .then(function (quiz) {
-//         for  (let card of quiz.cards) {
-            
-//         } 
+// $().on("click", function() {
+//     console.log('fuckjquery');
+// });
+
 
 
 
