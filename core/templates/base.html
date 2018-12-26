@@ -37,24 +37,23 @@ Quizzer
                     </div>
         </nav>
     </header>
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            {{ message }}
-            </div>
-            
-            {% endfor %}
-        {% endif %}
-        </ul>
 
-
-
-
-
+{% if messages %}
+    {% for message in messages %}
+    <article class="message is-success">
+        <div class="message-header">
+          <p>On your way to learning! Would you like to add some cards?</p>
+          <button class="delete" aria-label="delete"></button>
+        </div>
+        <!-- <div class="message-body">
+             On your way to learning! Would you like to add some cards? -->
+        <!-- </div> -->
+      </article>
+    {{ message }}
+    </div>
+    {% endfor %}
+{% endif %}
+</ul>
 
 {% block content %}{% endblock content %}
 {% block footer %}{% endblock footer %}

@@ -76,10 +76,10 @@ def new_quiz(request):
             quiz = form.save(commit=False)
             quiz.author = request.user
             quiz.save()
-            messages.success(request, 'A new quiz has been made! Now add some cards.')
+            messages.success(request, 'Select an option below.')
             return redirect('home')
-        else:
-            messages.warning(request, 'Sorry, something went wrong. Please try again!')
+        # else:
+        #     messages.warning(request, 'Sorry, something went wrong. Please try again!')
     else:
         form = QuizForm()
 
@@ -96,6 +96,14 @@ def edit_quiz(request, pk):
     if request.method == 'POST':
         form = form_class(data=request.POST, instance=quiz)
         if form.is_valid():
+            card = form.save(commit=False)
+            card.quiz = this_quiz
+            card.save()
+            messages.success(request, 'Select the plus sign below to add a card!')
+            return redirect('quiz_detail', pk=this_quiz.pk)
+        # else:
+        #     messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
+
             form.save()
             return redirect("quiz_detail", pk=quiz.pk)
     
