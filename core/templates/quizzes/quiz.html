@@ -1,11 +1,59 @@
 {% extends 'base.html' %} 
 
 {% block title %}
-    {{ post.title }} - {{ block.super }} 
+    {{ quiz.title }} - {{ block.super }} 
 {% endblock title %}
 
 {% block content %}
-<div class = "container">
+<h3 class ="subtitle">Quiz Name | {{ quiz.title }} </h2>
+<div class="top box">
+    
+            <article class="media">
+        <div class="media-left">
+    </div>
+    <div class="media-content">
+        <div class="content">
+
+                {% if card %}
+                    <h1>Question:  {{ card.question }} </h1>
+                    <br>
+                   
+                    <h3>answer: {{ card.answer }} </h3>
+
+                {% else %}
+                    <p> no cards found </p>
+                {% endif %}
+                <br>        
+
+                </div>
+                    <a class="button is-success"><i class="fas fa-check"></i> &nbsp; Correct</a>
+                    <a class="button is-danger"><i class="fas fa-times"></i> &nbsp; Incorrect</a>
+                    <br>
+                <h3 class ="subtitle">Question 1 of 15</h3>  
+                
+                
+                </div>
+            </article>
+            </div> 
+            <div class = "container">
+            <nav class="level is-mobile">
+                    <div class="level-left">
+                        <a class="level-item" aria-label="reply">
+                            <span class="icon is-small">
+                                <i class="fas fa-arrow-left"></i>
+                                
+                            </span>
+                            <br>
+                                <br>
+                                <br>
+                    <a class="level-item" aria-label="like">
+                        <span class="icon is-small">
+                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                    
+                    </div>
+                </nav>
     <a class="subtitle">
     <span class="icon is-medium">
         <i class="fas fa-arrow-left"></i>
@@ -13,39 +61,6 @@
     <span>Back to Quizzes</span>
     </a>
             </div>  
-            <div class="top box">
-            <h3 class ="subtitle">Quiz Name | Animal Quiz</h2>
-            
-            <article class="media">
-                <div class="media-left">
-                </div>
-                <div class="media-content">
-                <div class="content">
-                    <h1 class ="title is-1"> Who was the first president ?</h1>
-                </div>
-                <a class="button is-success"><i class="fas fa-check"></i> &nbsp; Correct</a>
-                <a class="button is-danger"><i class="fas fa-times"></i> &nbsp; Incorrect</a>
-                <p>
-                <h3 class ="subtitle">Question 1 of 15</h3>  
-                </p>
-                <nav class="level is-mobile">
-                    <div class="level-left">
-                    <a class="level-item" aria-label="reply">
-                        <span class="icon is-small">
-                       <i class="fas fa-arrow-left"></i>
-                        </span>
-                    
-                   
-                    <a class="level-item" aria-label="like">
-                        <span class="icon is-small">
-                        <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                    </div>
-                </nav>
-                </div>
-            </article>
-            </div>
 
   
 

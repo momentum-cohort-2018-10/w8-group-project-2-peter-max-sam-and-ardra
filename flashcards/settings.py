@@ -14,6 +14,7 @@ import os
 import django_heroku
 from django.contrib.messages import constants as messages
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -35,6 +36,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'core',
     'registration',
+    'el_pagination',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,7 +61,7 @@ ROOT_URLCONF = 'flashcards.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -66,6 +69,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request', ## For EL-pagination
             ],
         },
     },
@@ -86,7 +90,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -125,7 +128,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 ACCOUNT_ACTIVATION_DAYS = 7
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'testing@example.com'
@@ -144,3 +150,5 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+EL_PAGINATION_PER_PAGE = 5
