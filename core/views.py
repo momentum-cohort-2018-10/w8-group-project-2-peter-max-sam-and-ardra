@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from core.models import Quiz, Card
 from core.forms import QuizForm, CardForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -10,10 +11,13 @@ def index(request):
         return render(request, "sign_in.html")
 
     else:
-
-        quizzes = Quiz.objects.all()
+        
+        quizzes = Quiz.objects.all().order_by('-date_created')
+        
         return render(request, "index.html", {
             'quizzes': quizzes,
+            
+            
         })
 
 def account(request):
@@ -22,6 +26,7 @@ def account(request):
 def quiz_detail(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     cards = quiz.cards.all()
+    card_count = quiz.cards.count()
 
     if request.method == 'POST':
         form = CardForm(request.POST)
@@ -29,7 +34,7 @@ def quiz_detail(request, pk):
             card = form.save(commit=False)
             card.quiz = quiz
             card.save()
-            messages.success(request, 'Card Added')
+            messages.success(request, f'Card {card.answer} Created')
             return redirect('quiz_detail', pk=quiz.pk)
         else:
             messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
@@ -42,6 +47,20 @@ def quiz_detail(request, pk):
         'quiz': quiz,
         'cards': cards,
         'form': form,
+        'card_count': card_count,
+    })
+
+
+def sort_by_newest(request):
+    quizzes = Quiz.objects.all().order_by('-date_created')
+    return render(request, 'index.html', 
+    {'quizzes': quizzes
+    })
+
+def sort_by_oldest(request):
+    quizzes = Quiz.objects.all().order_by('date_created')
+    return render(request, 'index.html', {
+        'quizzes': quizzes
     })
 
 def delete_card(request, pk):
@@ -76,7 +95,7 @@ def new_quiz(request):
             quiz = form.save(commit=False)
             quiz.author = request.user
             quiz.save()
-            messages.success(request, 'Select an option below.')
+            messages.success(request, f'Quiz {quiz} Created')
             return redirect('home')
         # else:
         #     messages.warning(request, 'Sorry, something went wrong. Please try again!')
@@ -87,8 +106,6 @@ def new_quiz(request):
 
         "form": form,
     })
-
-
 
 def edit_quiz(request, pk):
     quiz = Quiz.objects.get(pk=pk)
@@ -105,12 +122,12 @@ def edit_quiz(request, pk):
         #     messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
 
             form.save()
-            return redirect("quiz_detail", pk=quiz.pk)
+            return redirect('home')
+            # return redirect("quiz_detail", pk=quiz.pk)
     
     else:
         form = form_class(instance=quiz)
     return render(request, 'quizzes/edit_quiz.html', {'quiz': quiz, 'form': form, })
-
 
 def edit_card(request, pk):
     card = Card.objects.get(pk=pk)

@@ -33,4 +33,6 @@ urlpatterns = [
     # path('quiz/<int:pk>/take_quiz', views.take_quiz, name='take_quiz'),
     # path('quiz/<int:pk>/new/card', views.new_card, name='new_card'),
     path('quiz/<int:pk>/playquiz/', views.play_quiz, name="play_quiz"),
+    path('quiz/newest/', views.sort_by_newest, name='sort_by_newest'),
+    path('quiz/oldest/', views.sort_by_oldest, name='sort_by_oldest'),
 ]

@@ -45,7 +45,43 @@
       <div class="tile">
         <div class="tile is-parent is-vertical">
           <article class="tile is-child notification is-light">
-            <h3 class="right"> <i class="fas fa-arrow-right"></i> Sort By: <b> Date Created</b> </h3>
+            
+            <div class="right">
+               
+ 
+
+<div class="dropdown is-hoverable">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+      <span>Sort By:</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+    <div class="dropdown-content">
+      <div class="dropdown-item">
+        <a class="has-text-dark" href="{% url 'sort_by_newest' %}">
+        <span class="icon is-small"><i class="fas fa-caret-up"></i></span>
+        <span>Sort By Newest</span>
+      </a>
+      
+      </div>
+      <div class="dropdown-item">
+        <a class="has-text-dark" href="{% url 'sort_by_oldest' %}">
+        <span class="icon is-small"><i class="fas fa-caret-down"></i></span>
+        <span>Sort By Oldest</span>
+      </a>
+      
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+
+
+
             <h1 class="title avenir"> My Quizzes </h1>
           {% paginate quizzes %}
             {% for quiz in quizzes %}
@@ -53,7 +89,7 @@
             <div class="box avenir">
       
                 <h1 class = "title"> <a href="{% url 'quiz_detail' pk=quiz.pk %}">{{ quiz.title }} </a></h1>
-                <h3 class="right"> <i class="fas fa-columns"></i> Total Cards: <b>5</b> </h3>
+                <h3 class="right"> <i class="fas fa-columns"></i> Total Cards: <b>{{card_count|length}}</b></h3>
                                 <nav class="breadcrumb" aria-label="breadcrumbs">
                                     <ul>
                                         <li>
@@ -126,7 +162,7 @@
 
           </div>
           <div class="panel-block">
-            <button class="button is-link is-outlined is-fullwidth">
+            <button id="test" class="button is-link is-outlined is-fullwidth">
               Search
             </button>
           </div>
@@ -150,6 +186,28 @@
             </span>
             Share A Quiz
           </a>
+          <br>
+          
+
+          {% if messages %}
+    {% for message in messages %}
+    <article class="message ">
+        <div id="notification" class="message-header">
+          
+          <button class="delete" aria-label="delete"></button>
+        
+        <!-- <div class="message-body">
+             On your way to learning! Would you like to add some cards? -->
+        <!-- </div> -->
+
+        {{ message }}
+
+        </div>
+      </article>
+    
+    </div>
+    {% endfor %}
+{% endif %}
           
           
           
