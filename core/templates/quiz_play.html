@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load flashcards_filters %}
 <head>
 {% block title %}
 {% endblock title %}
@@ -14,14 +15,94 @@
 <script src="{% static 'js/play_quiz.js' %}" defer></script>
 
 <div id='cardlist' class="container is-fluid">
-    <button id='nextcard'>another card</button>
-    <div class='tile' id="card"> 
+    
+    
+
+
+
+
+
+
+
+
+
+<div class="title container tabs is-toggle-rounded avenir">
+  <ul>
+    <li >
+      <a class="has-text-grey-lighter" href="{% url 'quiz_detail' pk=quiz.pk %}">
+        <span class="icon is-small "><i class="fas fa-arrow-left"></i></span>
+        <span>Go Back</span>
+      </a>
+    </li >
+    <li class="is-active ">
+      <a class="has-text-grey-lighter" >
+        <span class="icon is-small"><i class="fas fa-play"></i></span>
+        <span> Playing "{{quiz.title}}" </span>
+      </a>
+    </li>
+    <li>
+      <a class="has-text-grey-lighter" href="{% url 'play_quiz' pk=quiz.pk %}">
+        <span class="icon is-small"><i class="fas fa-share"></i></span>
+        <span>Restart Quiz</span>
+      </a>
+    </li>
+      <div class="tabs is-right">
+        <li >
+          <a class="has-text-grey-lighter" href="{% url 'quiz_detail' pk=quiz.pk %}">
+            <span class="icon is-small"><i class="fas fa-plus"></i></span>
+            <span>Add Card</span>
+          </a>
+        </li>
+      </div>
+  </ul>
+</div>
+<br>
+
+
+
+
+ <div id='cardlist' class="play avenir">
+    <div class= "#" id='apple'>
+    <h3 class="right subtitle has-text-white"> <i class="fas fa-columns"></i> Total Cards: {{ quiz|card_count }} <b>  </b></h3>
+        <h1 class="subtitle has-text-white"> Quiz:  <b><i>"{{quiz.title}}</b></i> "</h1>
+        <br>
+        <br>
+        <br>
+        
+    <div id="card" class="title is-1"> 
         <div id="question" class="front"></div> 
         <div id="answer" class="back"></div> 
     </div>
-    <button id='rightbutton'>got it right!</button>
-    <button id='wrong'>got it wrong!</button> 
+    
 </div>
+
+<br>
+        <br>
+        <br>
+
+<button class="button is-large is-outlined avenir" id='nextcard'><span class="panel-icon">
+              <i class="fas fa-share" aria-hidden="true"></i>
+            </span>another card</button>
+
+    </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+
+    </div>
+    
+     {% comment %} <button id='rightbutton'>got it right!</button>
+    <button id='wrong'>got it wrong!</button>   {% endcomment %}
+ </div> 
+        <br>
+        <br>
+        <br>
+
+
+
+
 
 
 

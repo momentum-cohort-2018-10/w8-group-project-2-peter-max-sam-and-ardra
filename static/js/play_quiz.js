@@ -1,15 +1,15 @@
 function quizhtml (card) {
     return `
-    <div class = "container box thiscard">
-        <div class="front"> The question is: ${card.question} </div>
-        <div class="back"> The answer is: ${card.answer} </div>
+    <div class="thiscard tc">
+        <div class="front"><br><br>${card.question}</div>
+        <div class="back"><br><br>${card.answer}</div>
     </div>
     `
 }
 
 function redoQuiz () {
     return `
-    <button id='redobutton'>play again?</button>
+    <button class="button is-large avenir" id='redobutton'>play again?</button>
     `
 }
 
@@ -48,12 +48,15 @@ function flipThroughCards () {
         let numOfCards = randCard(cardPile.length)
         let currentCard = cardPile[numOfCards]
         cardList.innerHTML = quizhtml(currentCard)
+        $(cardList).find('.thiscard').flip({
+            trigger: 'click'
+        })
         usedPile.push(currentCard)
         cardPile.splice(numOfCards, 1)
         console.log(numOfCards)
         console.log(cardPile)
         console.log(usedPile)
-        $('.back').hide()
+        // $('.back').hide()
   }
 }
 
@@ -61,13 +64,6 @@ $('#nextcard').on("click", function() {
     flipThroughCards();
 });
 
-$('#card').on("click", function() {
-    flipover();
-});
-
-function flipover() {
-    $('.front, .back').toggle() 
-}
 
 $('#rightbutton').on("click", function() {
     console.log('right button clicked')
