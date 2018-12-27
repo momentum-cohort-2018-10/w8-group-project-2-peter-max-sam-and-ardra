@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from core import views
+from django.contrib.auth.views import (PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView,)
 
 urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
@@ -33,6 +34,13 @@ urlpatterns = [
     # path('quiz/<int:pk>/take_quiz', views.take_quiz, name='take_quiz'),
     # path('quiz/<int:pk>/new/card', views.new_card, name='new_card'),
     path('quiz/<int:pk>/playquiz/', views.play_quiz, name="play_quiz"),
+    # password urls:
+    path('accounts/password/reset', PasswordResetView.as_view(template_name='registration/password_reset_form.html'), name="password_reset"),
+    path('accounts/password/reset/done/',PasswordResetView.as_view(template_name='registration/password_reset_done.html'), name="password_reset_done"),
+    path('accounts/password/reset/<uidb64>/<token>/',PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'), name="password_reset_confirm"),
+    path('accounts/password/complete/',PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name="password_reset_complete"),
+    
+    ]
     path('quiz/newest/', views.sort_by_newest, name='sort_by_newest'),
     path('quiz/oldest/', views.sort_by_oldest, name='sort_by_oldest'),
 ]
