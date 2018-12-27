@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
 def index(request):
     if not request.user.is_authenticated:
         return render(request, "sign_in.html")
@@ -70,7 +69,7 @@ def delete_card(request, pk):
     quiz_id = card.quiz.id
     # if (request.user == quiz.author) or (request.user.is_staff):
     card.delete()
-    messages.success(request, f'Card "{card}" Deleted')
+    messages.success(request, f'Card "{card.answer}" Deleted')
     return redirect('quiz_detail', pk=quiz_id)
     # return render(request, 'quizzes/quiz_detail.html',)
 
