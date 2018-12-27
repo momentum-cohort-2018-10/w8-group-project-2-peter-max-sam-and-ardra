@@ -1,15 +1,15 @@
 function quizhtml (card) {
     return `
-    <div class = "container box thiscard">
-        <div class="front"> The question is: ${card.question} </div>
-        <div class="back"> The answer is: ${card.answer} </div>
+    <div class = "thiscard tc">
+        <div class="front">  ${card.question} </div>
+        <div class="back">  ${card.answer} </div>
     </div>
     `
 }
 
 function redoQuiz () {
     return `
-    <button id='redobutton'>play again?</button>
+    <button id='redobutton' class="button is-large is-outlined avenir tc" >play again?</button>
     `
 }
 
@@ -61,7 +61,7 @@ $('#nextcard').on("click", function() {
     flipThroughCards();
 });
 
-$('#card').on("click", function() {
+$('#apple').on("click", function() {
     flipover();
 });
 
