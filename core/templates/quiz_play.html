@@ -13,19 +13,16 @@
 <script src="{% static 'js/jquery.flip.js' %}" defer></script>
 <script src="{% static 'js/play_quiz.js' %}" defer></script>
 
-<div id='cardlist' class="container box">
+<div id='cardlist' class="container is-fluid">
     <button id='nextcard'>another card</button>
-    <div id="card"> 
+    <div class='tile' id="card"> 
         <div id="question" class="front"></div> 
         <div id="answer" class="back"></div> 
     </div>
+    <button id='rightbutton'>got it right!</button>
+    <button id='wrong'>got it wrong!</button> 
 </div>
-        <h2 id="question" class = "subtitle"></a></h2>
-        <h2 id="answer" class = "subtitle"></h2>
-            </p>
-        </div>
-      </div>
-</div>
+
 
 
 
