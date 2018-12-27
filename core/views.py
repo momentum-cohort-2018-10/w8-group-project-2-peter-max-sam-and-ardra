@@ -97,10 +97,9 @@ def edit_quiz(request, pk):
         form = form_class(data=request.POST, instance=quiz)
         if form.is_valid():
             card = form.save(commit=False)
-            card.quiz = this_quiz
             card.save()
             messages.success(request, 'Select the plus sign below to add a card!')
-            return redirect('quiz_detail', pk=this_quiz.pk)
+            return redirect('quiz_detail', pk=quiz.pk)
         # else:
         #     messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
 
