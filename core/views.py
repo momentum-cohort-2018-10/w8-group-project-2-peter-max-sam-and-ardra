@@ -11,18 +11,17 @@ def index(request):
         return render(request, "sign_in.html")
 
     else:
-        
-        quizzes = Quiz.objects.all().order_by('-date_created')
-        
+        quizzes = Quiz.objects.all().order_by('-date_created').prefetch_related('cards')
+
         return render(request, "index.html", {
-            'quizzes': quizzes,
-            
-            
+            'quizzes': quizzes,  
         })
 
+@login_required
 def account(request):
     return render(request, "account.html")
 
+@login_required
 def quiz_detail(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     cards = quiz.cards.all()
@@ -34,7 +33,7 @@ def quiz_detail(request, pk):
             card = form.save(commit=False)
             card.quiz = quiz
             card.save()
-            messages.success(request, f'Card {card.answer} Created')
+            messages.success(request, f'Card "{card.answer}" Created')
             return redirect('quiz_detail', pk=quiz.pk)
         else:
             messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
@@ -63,6 +62,7 @@ def sort_by_oldest(request):
         'quizzes': quizzes
     })
 
+@login_required
 def delete_card(request, pk):
     """deletes a users card, user must be logged in"""
     
@@ -70,24 +70,29 @@ def delete_card(request, pk):
     quiz_id = card.quiz.id
     # if (request.user == quiz.author) or (request.user.is_staff):
     card.delete()
+    messages.success(request, f'Card "{card}" Deleted')
     return redirect('quiz_detail', pk=quiz_id)
     # return render(request, 'quizzes/quiz_detail.html',)
 
+@login_required
 def delete_quiz(request, pk):
     """deletes a users quiz, user must be logged in"""
     # quiz = Quiz.objects.get(pk=pk)
     quiz = Quiz.objects.get(pk=pk)
     # if (request.user == quiz.author) or (request.user.is_staff):
     quiz.delete()
+    messages.success(request, f'Quiz "{quiz}" Deleted')
     return redirect('home')
     # return render(request, 'quizzes/quiz_detail.html',)
 
+@login_required
 def play_quiz(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     return render(request, 'quiz_play.html', {
         'quiz': quiz,
     })
 
+@login_required
 def new_quiz(request):
     if request.method == 'POST':
         form = QuizForm(request.POST)
@@ -95,7 +100,7 @@ def new_quiz(request):
             quiz = form.save(commit=False)
             quiz.author = request.user
             quiz.save()
-            messages.success(request, f'Quiz {quiz} Created')
+            messages.success(request, f'Quiz "{quiz}" Created')
             return redirect('home')
         # else:
         #     messages.warning(request, 'Sorry, something went wrong. Please try again!')
@@ -107,6 +112,7 @@ def new_quiz(request):
         "form": form,
     })
 
+@login_required
 def edit_quiz(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     form_class = QuizForm
@@ -117,7 +123,7 @@ def edit_quiz(request, pk):
             card.quiz = this_quiz
             card.save()
             messages.success(request, 'Select the plus sign below to add a card!')
-            return redirect('quiz_detail', pk=this_quiz.pk)
+            return redirect('quiz_detail', pk=pk)
         # else:
         #     messages.warning(request, 'Sorry, something did not work. Make sure you fill out both question and answer fields.')
 
@@ -129,6 +135,7 @@ def edit_quiz(request, pk):
         form = form_class(instance=quiz)
     return render(request, 'quizzes/edit_quiz.html', {'quiz': quiz, 'form': form, })
 
+@login_required
 def edit_card(request, pk):
     card = Card.objects.get(pk=pk)
     form_id = card.quiz.id
@@ -144,3 +151,6 @@ def edit_card(request, pk):
     else:
         form = form_class(instance=card)
     return render(request, 'cards/edit_card.html', {'card': card, 'form': form, })
+
+
+

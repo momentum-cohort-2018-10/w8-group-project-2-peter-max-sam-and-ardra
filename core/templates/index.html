@@ -1,5 +1,6 @@
 {% extends 'base.html' %} 
 {% load el_pagination_tags %}
+{% load flashcards_filters %}
 
 
 {% block title %}
@@ -89,7 +90,7 @@
             <div class="box avenir">
       
                 <h1 class = "title"> <a href="{% url 'quiz_detail' pk=quiz.pk %}">{{ quiz.title }} </a></h1>
-                <h3 class="right"> <i class="fas fa-columns"></i> Total Cards: <b>{{card_count|length}}</b></h3>
+                <h3 class="right"> <i class="fas fa-columns"></i> Total Cards: <b>{{quiz|card_count}}</b></h3>
                                 <nav class="breadcrumb" aria-label="breadcrumbs">
                                     <ul>
                                         <li>
