@@ -4,6 +4,8 @@
 {% endblock title %}
 {% block content %}
 
+{% comment %} Quiz detail Top Nav Options {% endcomment %}
+
 <div class="title container tabs is-toggle-rounded avenir">
   <ul>
     <li >
@@ -34,7 +36,7 @@
       </div>
   </ul>
 </div>
-
+{% comment %} Main Quiz Detail Card  {% endcomment %}
 
 <div class="container avenir ">
     <div class="tile is-ancestor ">
@@ -43,7 +45,7 @@
                 <div class="tile is-parent ">
                     <article class="tile is-child box has-background-light">
                         <h1 class="title is-1 "> <i> {{ quiz.title }} </i> </h1>
-                            <h3 class="right"> <i class="fas fa-columns"></i> Total Cards: <b>5</b> </h3>
+                            <h3 class="right"> <i class="fas fa-columns"></i> Total Cards: <b> {{card_count}} </b></h3>
                                 <nav class="breadcrumb" aria-label="breadcrumbs">
                                     <ul>
                                         <li>
@@ -73,6 +75,8 @@
                                         
                                     </ul>
                                     </nav>
+
+                                {% comment %} Card For Loop  {% endcomment %}
                 
                                 {% for card in cards %}
                                     <div class = "box avenir">
@@ -90,7 +94,7 @@
         </div>
     
         
-        <!-- Card for loop ^ -->
+        {% comment %} Add a Card Div {% endcomment %}
 
             <div class="tile is-parent avenir">
             
@@ -98,7 +102,7 @@
                     <div id="add-a-card" class ="flex">
                         <article class="message is-primary">
 
-                                    <!-- Add card form plus message v -->
+                                    <!-- Add card Form  plus message v -->
                                             <div class="message-body avenir">
                                                     
                                                         <span class="icon is-medium has-text-primary">
@@ -113,18 +117,23 @@
                                                 <button type="submit" class = "button hero is-outlined  form-padding">Submit</button>   
                                                 </form> 
                                                 
-                                        
+                                        {% comment %} Message alert for Card Created {% endcomment %}
                                                 
                                                     {% if messages %}
-                                                        <ul class="messages">
-                                                            {% for message in messages %}
-                                                            <li class="{{ message.tags }}"> {{ message }}: </li>
-                                                            
-                                                            
-                                                            {% endfor %}
-                                                            
-                                                        </ul>
-                                                        {% endif %}
+                                                    {% for message in messages %}
+                                                    <article class="message is-grey">
+                                                        <div id="notification" class="message-header notification">
+                                                        
+                                                        <button class="delete" aria-label="delete"></button>
+                                                        
+                                                        {{ message }}
+
+                                                        </div>
+                                                    </article>
+                                                    
+                                                    </div>
+                                                    {% endfor %}
+                                                {% endif %}
                                                         
                                                 
                                             </div>

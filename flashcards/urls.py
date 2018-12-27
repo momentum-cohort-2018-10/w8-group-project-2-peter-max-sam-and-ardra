@@ -41,3 +41,6 @@ urlpatterns = [
     path('accounts/password/complete/',PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'), name="password_reset_complete"),
     
     ]
+    path('quiz/newest/', views.sort_by_newest, name='sort_by_newest'),
+    path('quiz/oldest/', views.sort_by_oldest, name='sort_by_oldest'),
+]

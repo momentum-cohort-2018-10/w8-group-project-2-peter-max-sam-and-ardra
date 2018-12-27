@@ -1,10 +1,17 @@
-{% extends 'base.html' %} 
+{% load staticfiles %}
+<!doctype html> <html class="has-navbar-fixed-top">
+<head>
+<title>
+Quizzer
+</title>
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<link rel="stylesheet" href="{% static 'css/style.css' %}"/> 
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"/>
 
-{% block title %}
-Logout - {{ block.super }} 
-{% endblock title %}
+<script src="{% static 'js/jquery-3.3.1.min.js' %}" defer></script>
+</head>
 
-{% block content %}
 <header class="avenir">
   <div class="cover bg-left bg-center-l" style="background-image: url(https://neuropharmlabs.com/wp-content/uploads/2015/01/neuropharm-flash-cards.jpeg)">
     <div class="bg-black-80 pb5 pb6-m pb7-l">
@@ -38,13 +45,8 @@ Logout - {{ block.super }}
         </div>
       </nav> 
       <div class="tc-l mt4 mt5-m mt6-l ph3 avenir">
-        <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Successfully Logged Out </h1>
-        
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">404 ERROR</h1>
+        <h2 class="fw1 f3 white-80 mt3 mb4">Create Flashcards, Build Quizzes, and learn faster with Quizzers learning tools</h2>
         <a class="button is-outlined is-rounded" href="{% url 'auth_login' %}">Login</a>
         <span class="dib v-mid ph3 white-70 mb3">or</span>
         <a class="button is-outlined is-rounded" href="{% url 'registration_register' %}">Create New Account</a>
@@ -55,54 +57,14 @@ Logout - {{ block.super }}
 
 </body>
 
-    
+    <footer class="footer hero is-primary is-bold is-small">
+        <div class="content has-text-centered has-text-white-ter">
+            
+            <a > <i class="fab fa-twitter fa-1x"></i> &nbsp; </a>
+            <a > <i class="fab fa-facebook-square fa-1x"></i> &nbsp; </a>
+            <a > <i class="fab fa-instagram fa-1x"></i> &nbsp; </a>
+            <p> - Peter Max Ardra Sam - </p>
+        </div>
+    </footer>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-{% endblock content %}
-
-
-
-<div class="title container tabs is-toggle-rounded avenir">
-  <ul>
-    <li >
-      <a class="has-text-grey-lighter" href="{% url 'home' %}">
-        <span class="icon is-small "><i class="fas fa-arrow-left"></i></span>
-        <span>Logged Out</span>
-      </a>
-    </li >
-   
-    <li class="is-active ">
-      <a class="has-text-grey-lighter">
-        <span class="icon is-small"><i class="fas fa-check"></i></span>
-        <span>Login</span>
-      </a>
-    </li>
-      
-  </ul>
-</div>
-
-<div class ="box container has-background-grey-lighter avenir"> 
-     <h1 class= "title"> Successfully Logged Out! </h1>
-    <form role="form" action="" method="post">
-        {% csrf_token %}
-        {{ form.as_p}}
-        <button class= " button is-rounded is-warning" type="submit">Submit</button>
-    </form>
-
-</div>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
