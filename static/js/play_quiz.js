@@ -53,20 +53,9 @@ function flipThroughCards () {
         console.log(numOfCards)
         console.log(cardPile)
         console.log(usedPile)
-        $('.back').hide();
+        $('.back').hide()
   }
 }
-
-    //     for (card of quiz.cards) {
-    //         cardHTML = quizhtml(card)
-    //         cardStock = document.createElement('div')
-    //         cardStock.classList.add('cardStock')
-    //         $(cardStock).attr('id', `cardnumber${counter}`)
-    //         cardStock.innerHTML = cardHTML
-    //         cardList.appendChild(cardStock)
-    //         counter += 1
-    //     }
-
 
 $('#nextcard').on("click", function() {
     flipThroughCards();
@@ -76,22 +65,47 @@ $('#card').on("click", function() {
     flipover();
 });
 
-// $().on("click", function() {
-//     console.log('fuckjquery');
-// });
-
-
-
-
 function flipover() {
-    // $('.back').hide();
-    // $('.front, .back').on( 'click', function() {
     $('.front, .back').toggle() 
-    // })
 }
+
+$('#rightbutton').on("click", function() {
+    console.log('right button clicked')
+    rightButton()
+});
+
+function rightButton() {
+    console.log('rightbuttonworks')
+    $.ajax({
+        url: "/api/cards/1/",
+        method: 'PATCH',
+        data: card.rightanswers += 1,
+        contentType: 'application/json'
+    })
+}
+
+
+function setupCSRFAjax () {
+    var csrftoken = Cookies.get('csrftoken')
+  
+    $.ajaxSetup({
+      beforeSend: function (xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader('X-CSRFToken', csrftoken)
+        }
+      }
+    })
+  }
+
+
+function csrfSafeMethod (method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method))
+  }
 
 function loadPage () {
     loadQuizData()
+    setupCSRFAjax()
 }
 
 loadPage()
