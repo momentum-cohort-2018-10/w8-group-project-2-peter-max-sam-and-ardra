@@ -1,0 +1,23 @@
+[
+    {
+        "author": "Andrew King", "title": "Backpacking Supplies", 
+        "date_created": "2018-12-27"
+    },
+    {
+        "author": "Morgan Farris","title": "Farm Tools", "date_created": "2018-11-13"
+    },
+    {
+        "author": "Melanie Harrington",
+        "title": "Chemistry Terms",
+        "date_created": "2018-10-07"
+    }
+]
+
+[
+    {
+        "quiz": "?",
+        "question": "What percentage of your body weight should your backpack be equal or less than?",
+        "answer": "33%",
+        "right_answers": "?"
+    }
+]

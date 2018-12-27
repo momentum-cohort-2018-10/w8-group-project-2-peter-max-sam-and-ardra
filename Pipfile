@@ -9,12 +9,12 @@ django = "*"
 django-extensions = "*"
 django-debug-toolbar = "*"
 django-registration-redux = "*"
-
 djangorestframework = "*"
 gunicorn = "*"
 django-heroku = "*"
 django-simple-pagination = "*"
 django-el-pagination = "*"
+faker = "*"
 
 [dev-packages]
 prospector = "*"
