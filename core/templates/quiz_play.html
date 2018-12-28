@@ -12,7 +12,17 @@
 <script src="{% static 'js/jquery.flip.js' %}" defer></script>
 <script src="{% static 'js/play_quiz.js' %}" defer></script>
 
-<body>
+<div id='cardlist' class="container is-fluid">
+    
+    
+
+
+
+
+
+
+
+
 
 <div class="title container tabs is-toggle-rounded avenir">
   <ul>
@@ -46,86 +56,45 @@
 </div>
 <br>
 
+
+
+
  <div id='cardlist' class="play avenir">
-    <div class= "box" id='apple'>
-    <h3 class="right"> <i class="fas fa-columns"></i> Total Cards: <b> {{quiz|card_count}} </b></h3>
-        <h1 class="subtitle is-light"> Quiz:  <b><i>"{{quiz.title}}</b></i> "</h1>
+    <div class= "#" id='apple'>
+    <h3 class="right subtitle has-text-white"> <i class="fas fa-columns"></i> Total Cards: {{ quiz|card_count }} <b>  </b></h3>
+        <h1 class="subtitle has-text-white"> Quiz:  <b><i>"{{quiz.title}}</b></i> "</h1>
         <br>
         <br>
         <br>
         
+    <div id="card" class="title is-1"> 
+        <div id="question" class="front"></div> 
+        <div id="answer" class="back"></div> 
+    </div>
     
-        <div class='title is-1' id="card"> 
-            
-    
-            <div id="question" class="front title"></div> 
-            <div id="answer" class="back title"></div> 
-
-    </div>
-        <br>
-        <br>
-        <br>
-        <br>
-
-    </div>
-
-    <button class="button is-large is-outlined avenir" id='nextcard'> 
-            <span class="panel-icon">
-              <i class="fas fa-share" aria-hidden="true"></i>
-            </span>another card</button> 
-     {% comment %} <button id='rightbutton'>got it right!</button>
-    <button id='wrong'>got it wrong!</button>   {% endcomment %}
-
- </div> 
-
-        <br>
-        <br>
-        <br>
-
-
-{% comment %} 
-
-<div id='cardlist' class="card play">
-    <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">
-            Quiz.Name
-            </p>
-        </header>
-
-  <div class="card-content">
-    
-        <div id='cardlist' class="card">
-            <div class='title' id="card"> 
-                <div id="question" class="front title"></div> 
-                <div id="answer" class="back title"></div> 
-            </div>
-            {% comment %} <button id='rightbutton'>got it right!</button>
-            <button id='wrong'>got it wrong!</button>  {% endcomment %}
-        {% comment %} </div>
-    </div>
-      Additional Content
-      <br>
-    </div>
-  
-
-  <footer class="card-footer">
-    <a href="#" class="card-footer-item">Save</a>
-    <a href="#" class="card-footer-item">Delete</a>
-  </footer>
-
 </div>
 <br>
 
-<button class = "hero button is-rounded" id='nextcard'>another card</button>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>  {% endcomment %}
+<button class = "button is-large avenir" id='nextcard'>another card</button>
+        <br>
+        <br>
+    </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+
+    </div>
+    
+ </div> 
+        <br>
+        <br>
+        <br>
+
+
+
+
 
 
 

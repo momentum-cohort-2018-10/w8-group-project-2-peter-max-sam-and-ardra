@@ -61,10 +61,27 @@ input {
 
 }
 
-.play{
-    margin-top: 10px;
-    margin-bottom: 10px;
+#card {
+    background-color: black;
+}
+
+
+.thiscard {
+    height: 300px;
+}
+
+.front {
+    background-color:white;
+    border-radius: 10px;
+
+}
+
+.back {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.play {
     margin-left: 250px;
     margin-right: 250px;
 }
-
