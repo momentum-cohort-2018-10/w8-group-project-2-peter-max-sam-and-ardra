@@ -56,7 +56,6 @@ function flipThroughCards () {
         console.log(numOfCards)
         console.log(cardPile)
         console.log(usedPile)
-        // $('.back').hide()
   }
 }
 
